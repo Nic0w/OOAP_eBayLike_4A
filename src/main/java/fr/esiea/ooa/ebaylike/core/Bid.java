@@ -59,5 +59,5 @@ public class Bid extends AbstractBid{
 		
 	}
 
-	
+
 }
