@@ -1,9 +1,9 @@
-package fr.esiea.ooa.ebaylike.abstra;
+package fr.esiea.ooa.ebaylike.core;
 
-import fr.esiea.ooa.ebaylike.UserInterface;
-import fr.esiea.ooa.ebaylike.interfac.Bid;
+import fr.esiea.ooa.ebaylike.iface.Bid;
+import fr.esiea.ooa.ebaylike.iface.User;
 
-public class AbstractUser implements UserInterface {
+public class AbstractUser implements User {
 
 	String firstName;
 	String lastName;

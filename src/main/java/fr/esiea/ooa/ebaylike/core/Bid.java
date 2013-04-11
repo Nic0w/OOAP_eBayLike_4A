@@ -1,6 +1,6 @@
-package fr.esiea.ooa.ebaylike;
+package fr.esiea.ooa.ebaylike.core;
 
-import fr.esiea.ooa.ebaylike.abstra.AbstractBid;
+import fr.esiea.ooa.ebaylike.iface.Seller;
 
 public class Bid extends AbstractBid{
 

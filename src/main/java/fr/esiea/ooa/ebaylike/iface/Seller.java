@@ -1,6 +1,5 @@
-package fr.esiea.ooa.ebaylike;
+package fr.esiea.ooa.ebaylike.iface;
 
-import fr.esiea.ooa.ebaylike.interfac.Bid;
 
 public interface Seller {
 

@@ -1,6 +1,5 @@
-package fr.esiea.ooa.ebaylike;
+package fr.esiea.ooa.ebaylike.core;
 
-import fr.esiea.ooa.ebaylike.abstra.AbstractOffer;
 
 public class Offer extends AbstractOffer {
 
@@ -14,12 +13,12 @@ public class Offer extends AbstractOffer {
 		
 	}
 
-	public void getPrice(fr.esiea.ooa.ebaylike.interfac.Offer offer) {
+	public void getPrice(fr.esiea.ooa.ebaylike.iface.Offer offer) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void offerDone(fr.esiea.ooa.ebaylike.interfac.Offer offer) {
+	public void offerDone(fr.esiea.ooa.ebaylike.iface.Offer offer) {
 		// TODO Auto-generated method stub
 		
 	}

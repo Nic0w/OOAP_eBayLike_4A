@@ -1,6 +1,5 @@
-package fr.esiea.ooa.ebaylike;
+package fr.esiea.ooa.ebaylike.core;
 
-import fr.esiea.ooa.ebaylike.abstra.AbstractProduct;
 
 public class Product extends AbstractProduct {
 

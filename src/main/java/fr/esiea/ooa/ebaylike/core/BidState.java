@@ -1,4 +1,4 @@
-package fr.esiea.ooa.ebaylike;
+package fr.esiea.ooa.ebaylike.core;
 
 public enum BidState {
 

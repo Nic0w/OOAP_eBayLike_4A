@@ -1,6 +1,7 @@
-package fr.esiea.ooa.ebaylike;
+package fr.esiea.ooa.ebaylike.iface;
 
-public interface UserInterface  extends Buyer,Seller{
+
+public interface User  extends Buyer,Seller{
 
 	public void getFirstName();
 	public void getLastName();

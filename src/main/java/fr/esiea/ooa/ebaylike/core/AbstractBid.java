@@ -1,12 +1,12 @@
-package fr.esiea.ooa.ebaylike.abstra;
+package fr.esiea.ooa.ebaylike.core;
 
 import java.util.Date;
 import java.util.List;
 
-import fr.esiea.ooa.ebaylike.Seller;
-import fr.esiea.ooa.ebaylike.interfac.Bid;
-import fr.esiea.ooa.ebaylike.interfac.Offer;
-import fr.esiea.ooa.ebaylike.interfac.Product;
+import fr.esiea.ooa.ebaylike.iface.Bid;
+import fr.esiea.ooa.ebaylike.iface.Offer;
+import fr.esiea.ooa.ebaylike.iface.Product;
+import fr.esiea.ooa.ebaylike.iface.Seller;
 
 public abstract class AbstractBid implements Bid {
 

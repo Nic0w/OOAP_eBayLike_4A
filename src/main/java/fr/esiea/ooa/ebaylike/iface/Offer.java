@@ -1,4 +1,4 @@
-package fr.esiea.ooa.ebaylike.interfac;
+package fr.esiea.ooa.ebaylike.iface;
 
 public interface Offer {
 
