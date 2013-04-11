@@ -2,8 +2,9 @@ package fr.esiea.ooa.ebaylike.iface;
 
 public interface Product {
 
-	void getId();
-	void getDescription();
-	void setId();
-	void setDecription();
+	public String getID();
+	
+	public String getDescription();
+	
+	public void setDescription(String text);
 }
