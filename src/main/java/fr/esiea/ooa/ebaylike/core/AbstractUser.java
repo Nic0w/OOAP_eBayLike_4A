@@ -9,18 +9,20 @@ public abstract class AbstractUser implements User {
 	String lastName;
 	String login;
 	
-	public final void getFirstName() {
+	@Override
+	public String getFirstName() {
 		// TODO Auto-generated method stub
-		
+		return null;
+	}
+	@Override
+	public String getLastName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getLogin() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
-	public final void getLastName() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public final void getLogin() {
-		// TODO Auto-generated method stub
-		
-	}
 }
