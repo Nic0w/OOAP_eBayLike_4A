@@ -27,7 +27,8 @@ public class User extends AbstractUser {
 		
 	}
 
-	public void createBid() {
+	public Bid createBid() {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}

@@ -3,7 +3,7 @@ package fr.esiea.ooa.ebaylike.iface;
 
 public interface Seller {
 
-	public void createBid();
+	public Bid createBid();
 	void publishBid(Bid bid);
 	
 }
