@@ -1,9 +1,9 @@
 /**
  * 
  */
-package fr.esiea.ooa.ebaylike.iface.factory;
+package fr.esiea.ooa.ebaylike.api.factory;
 
-import fr.esiea.ooa.ebaylike.iface.User;
+import fr.esiea.ooa.ebaylike.api.User;
 
 /**
  * @author nic0w

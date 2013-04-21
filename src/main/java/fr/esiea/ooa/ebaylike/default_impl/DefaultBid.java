@@ -1,8 +1,9 @@
-package fr.esiea.ooa.ebaylike.core;
+package fr.esiea.ooa.ebaylike.default_impl;
 
-import fr.esiea.ooa.ebaylike.iface.Seller;
+import fr.esiea.ooa.ebaylike.api.AbstractBid;
+import fr.esiea.ooa.ebaylike.api.Seller;
 
-public class Bid extends AbstractBid{
+public class DefaultBid extends AbstractBid{
 
 	public void getLimitDate() {
 		// TODO Auto-generated method stub

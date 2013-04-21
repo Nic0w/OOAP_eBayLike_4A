@@ -3,9 +3,15 @@
  */
 package fr.esiea.ooa.ebaylike;
 
-import fr.esiea.ooa.ebaylike.core.factory.DefaultUserFactory;
-import fr.esiea.ooa.ebaylike.iface.User;
-import fr.esiea.ooa.ebaylike.iface.factory.UserFactory;
+import java.util.List;
+
+import fr.esiea.ooa.ebaylike.api.Bid;
+import fr.esiea.ooa.ebaylike.api.User;
+import fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException;
+import fr.esiea.ooa.ebaylike.api.factory.UserFactory;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
+import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
+import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
 
 /**
  * @author nic0w
@@ -13,22 +19,12 @@ import fr.esiea.ooa.ebaylike.iface.factory.UserFactory;
  */
 public class BidPlatform {
 
-	private final UserFactory userFactory;
+	private final PersistenceAgent persistenceAgent;
 	
-	/**
-	 * Default constructor, uses the default implementation.
-	 */
-	public BidPlatform() {
-		this(new DefaultUserFactory());
+	BidPlatform(PersistenceAgent agent) {
+		this.persistenceAgent = agent;
 	}
 
-	/**
-	 * @param factory A different implementation.
-	 */
-	public BidPlatform(UserFactory factory) {
-		this.userFactory = factory;
-	}
-	
 	/**
 	 * Creates a new user in the system
 	 * 
@@ -36,8 +32,26 @@ public class BidPlatform {
 	 * @param name The new user's name.
 	 * @param forename The new user's forename.
 	 * @return
+	 * @throws UserAlreadyExistsException
+	 * @throws StorageException 
 	 */
-	public User newUser(String login, String name, String forename) {
-		return this.userFactory.createNewUser(login, name, forename);
+	public User newUser(String login, String name, String forename) throws UserAlreadyExistsException, StorageException {
+		
+		Persistor<User, UserFactory> userPersistor = this.persistenceAgent.getUserPersistor();
+		
+		User user = null;
+		
+		if((user = userPersistor.get(login)) != null)
+			throw new UserAlreadyExistsException(user);
+			
+		user = userPersistor.getFactory().createNewUser(login, name, forename);
+		
+		userPersistor.store(user);
+		
+		return user;
+	}
+	
+	public List<Bid> getPublishedBids() {
+		return null;
 	}
 }

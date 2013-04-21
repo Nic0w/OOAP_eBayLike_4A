@@ -1,15 +1,15 @@
-package fr.esiea.ooa.ebaylike.core;
+package fr.esiea.ooa.ebaylike.default_impl;
 
-import fr.esiea.ooa.ebaylike.iface.Product;
+import fr.esiea.ooa.ebaylike.api.Product;
 
 
-public final class RealProduct implements Product {
+public final class DefaultProduct implements Product {
 
 	private final String id;
 	
 	private String description;
 	
-	RealProduct(String id, String desc) {
+	DefaultProduct(String id, String desc) {
 		this.id = id;
 		this.description = desc;
 	}

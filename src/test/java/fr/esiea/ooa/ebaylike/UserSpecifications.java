@@ -10,10 +10,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import fr.esiea.ooa.ebaylike.core.exception.UserAlreadyExistsException;
-import fr.esiea.ooa.ebaylike.iface.Buyer;
-import fr.esiea.ooa.ebaylike.iface.Seller;
-import fr.esiea.ooa.ebaylike.iface.User;
+import fr.esiea.ooa.ebaylike.api.Buyer;
+import fr.esiea.ooa.ebaylike.api.Seller;
+import fr.esiea.ooa.ebaylike.api.User;
+import fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException;
+import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
+import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
 
 /**
  * @author Nic0w
@@ -38,38 +40,50 @@ public class UserSpecifications {
 	/**
 	 * The user is identified by a login - Test 1 :
 	 * 		the login cannot be null.
+	 * @throws StorageException 
+	 * @throws UserAlreadyExistsException 
 	 */
 	@Test(expected=IllegalArgumentException.class)
-	public final void testUserLoginCannotBeNull() {
+	public final void testUserLoginCannotBeNull() throws UserAlreadyExistsException, StorageException {
 
-		BidPlatform bidPlateform = new BidPlatform();
+		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
 		
-		User nullLoginUser = bidPlateform.newUser(null, "Benjamin", "Franklin");
+		BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
+		
+		User nullLoginUser = bidPlatform.newUser(null, "Benjamin", "Franklin");
 	}
 	
 	/**
 	 * The user is identified by a login - Test 2 :
 	 * 		the login cannot be void (String length = 0).
+	 * @throws StorageException 
+	 * @throws UserAlreadyExistsException 
 	 */
 	@Test(expected=IllegalArgumentException.class)
-	public final void testUserLoginCannotBeVoid() {
+	public final void testUserLoginCannotBeVoid() throws UserAlreadyExistsException, StorageException {
 
-		BidPlatform bidPlateform = new BidPlatform();
+		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
 		
-		User voidLoginUser = bidPlateform.newUser("", "Benjamin", "Franklin");
+		BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
+		
+		User voidLoginUser = bidPlatform.newUser("", "Benjamin", "Franklin");
 	}
 	
 	/**
 	 * The user is identified by a login - Test 3 :
 	 * 		The user's login is usable.
+	 * @throws StorageException 
+	 * @throws UserAlreadyExistsException 
 	 */
 	@Test
-	public final void testUserLoginIsUsable() {
+	public final void testUserLoginIsUsable() throws UserAlreadyExistsException, StorageException {
 
-		BidPlatform bidPlateform = new BidPlatform();
+		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
+		
+		BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
 
 		String testLogin = "testLogin";
-		User testLoginUser = bidPlateform.newUser(testLogin, "Benjamin", "Franklin");
+		User testLoginUser = bidPlatform.newUser(testLogin, "Benjamin", "Franklin");
 		
 		assertThat(testLoginUser.getLogin(), is(testLogin));
 	}
@@ -77,31 +91,38 @@ public class UserSpecifications {
 	/**
 	 * The user is identified by a login - Test 4 :
 	 * 		The user's login is unique in the system.
+	 * @throws StorageException 
+	 * @throws UserAlreadyExistsException 
 	 */
 	@Test(expected=UserAlreadyExistsException.class)
-	public final void testUserLoginIsUnique() {
+	public final void testUserLoginIsUnique() throws UserAlreadyExistsException, StorageException {
 
-		BidPlatform bidPlateform = new BidPlatform();
-
+		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
+		
+		BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
 		String uniqueLogin = "aUniqueLogin";
 		
-		User firstUser  = bidPlateform.newUser(uniqueLogin, "Benjamin", "Franklin");
-		User secondUser = bidPlateform.newUser(uniqueLogin, "Benjamin", "Franklin");
+		User firstUser  = bidPlatform.newUser(uniqueLogin, "Benjamin", "Franklin");
+		User secondUser = bidPlatform.newUser(uniqueLogin, "Benjamin", "Franklin");
 	}
 	
 	
 	/**
 	 * Test if the user has a name and a forename.
+	 * @throws StorageException 
+	 * @throws UserAlreadyExistsException 
 	 */
 	@Test
-	public final void testUserHasNameAndForename() {
+	public final void testUserHasNameAndForename() throws UserAlreadyExistsException, StorageException {
 		
 		String testName 	= "aRandomName";
 		String testForename = "aRandomForename"; 
 		
-		BidPlatform bidPlateform = new BidPlatform();
+		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
 		
-		User testUser = bidPlateform.newUser("aRandomLogin", testName, testName);
+		BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
+		
+		User testUser = bidPlatform.newUser("aRandomLogin", testName, testName);
 		
 		assertThat(testUser.getFirstName(), is(testName));
 		assertThat(testUser.getLastName(), is(testForename));

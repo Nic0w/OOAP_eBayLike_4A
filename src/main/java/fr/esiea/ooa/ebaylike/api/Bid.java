@@ -1,4 +1,4 @@
-package fr.esiea.ooa.ebaylike.iface;
+package fr.esiea.ooa.ebaylike.api;
 
 
 public interface Bid {

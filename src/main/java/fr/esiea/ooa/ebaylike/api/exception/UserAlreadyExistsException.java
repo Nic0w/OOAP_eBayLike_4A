@@ -1,9 +1,9 @@
 /**
  * 
  */
-package fr.esiea.ooa.ebaylike.core.exception;
+package fr.esiea.ooa.ebaylike.api.exception;
 
-import fr.esiea.ooa.ebaylike.iface.User;
+import fr.esiea.ooa.ebaylike.api.User;
 
 /**
  * @author nic0w
@@ -13,7 +13,7 @@ public class UserAlreadyExistsException extends Exception {
 
 	private final User alreadyExistingUser;
 	
-	UserAlreadyExistsException(User user) {
+	public UserAlreadyExistsException(User user) {
 		super(String.format(
 			"User with login '%s' is already existing in the system !", user.getLogin()
 		));
