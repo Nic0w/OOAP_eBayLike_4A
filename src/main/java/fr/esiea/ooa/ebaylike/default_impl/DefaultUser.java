@@ -29,25 +29,6 @@ public class DefaultUser extends PersistentUser {
 	}
 
 
-	@Override
-	public void bid() {
-		// TODO Auto-generated method stub
-
-	}
-
-
-	@Override
-	public void activateAlert() {
-		// TODO Auto-generated method stub
-
-	}
-
-
-	@Override
-	public void desactivateAlert() {
-		// TODO Auto-generated method stub
-
-	}
 
 
 	@Override
@@ -67,6 +48,13 @@ public class DefaultUser extends PersistentUser {
 	public void bidStateChanged(BidAlert alert) {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	@Override
+	public void bid(Bid bid, float price) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

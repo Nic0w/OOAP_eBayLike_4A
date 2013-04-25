@@ -1,5 +1,6 @@
 package fr.esiea.ooa.ebaylike;
 
+import fr.esiea.ooa.ebaylike.api.Bid;
 import fr.esiea.ooa.ebaylike.api.User;
 import fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
@@ -22,6 +23,11 @@ public class MainTest {
 			
 			System.out.println(u);
 			
+			Bid b = u.createBid(null, null).setMinimumPrice(0).setReservePrice(0).publishIt();
+			
+			
+			
+			u.bid(b, 0);
 			
 		} catch (UserAlreadyExistsException | StorageException e) {
 			// TODO Auto-generated catch block

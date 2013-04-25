@@ -2,11 +2,11 @@ package fr.esiea.ooa.ebaylike.api;
 
 import java.util.Date;
 
+import fr.esiea.ooa.ebaylike.api.event.AlertType;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
 
 public abstract class AbstractUser implements User {
-
 
 	private final String login;
 	private final String firstName;
@@ -30,5 +30,10 @@ public abstract class AbstractUser implements User {
 	@Override
 	public final String getLogin() {
 		return null;
+	}
+	
+	@Override
+	public void subscribeToAlerts(Bid bid, AlertType... alerts) {
+		bid.registerAlertListener(this, alerts);
 	}
 }

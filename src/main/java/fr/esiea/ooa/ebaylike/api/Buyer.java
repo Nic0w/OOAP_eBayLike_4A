@@ -4,7 +4,7 @@ import fr.esiea.ooa.ebaylike.api.event.AlertType;
 
 public interface Buyer {
 
-	public void bid();
+	public void bid(Bid bid, float price);
 	
 	public void testReservPrice();
 	

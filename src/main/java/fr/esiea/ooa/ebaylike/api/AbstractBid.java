@@ -15,8 +15,7 @@ public abstract class AbstractBid implements Bid {
  		private Product product;
  		
  		
- 		public void fireOfferone(){
- 			
- 			
- 		}
+
+ 		
+ 		
 }
