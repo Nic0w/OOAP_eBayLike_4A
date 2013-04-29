@@ -21,15 +21,15 @@ public abstract class AbstractUser implements User {
 	
 	@Override
 	public final String getFirstName() {
-		return null;
+		return this.firstName;
 	}
 	@Override
 	public final String getLastName() {
-		return null;
+		return this.lastName;
 	}
 	@Override
 	public final String getLogin() {
-		return null;
+		return this.login;
 	}
 	
 	@Override

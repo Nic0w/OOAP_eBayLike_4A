@@ -28,6 +28,7 @@ public abstract class PersistentUser extends AbstractUser {
 		super(login, firstname, lastname);
 		
 		this.bidPersistor = persistor;
+		
 	}
 
 	@Override

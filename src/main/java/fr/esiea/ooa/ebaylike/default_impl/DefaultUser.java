@@ -29,8 +29,6 @@ public class DefaultUser extends PersistentUser {
 	}
 
 
-
-
 	@Override
 	public void testReservPrice() {
 		// TODO Auto-generated method stub

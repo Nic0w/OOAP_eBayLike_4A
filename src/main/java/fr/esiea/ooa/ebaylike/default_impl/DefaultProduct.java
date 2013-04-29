@@ -5,7 +5,7 @@ import fr.esiea.ooa.ebaylike.api.Product;
 
 public final class DefaultProduct implements Product {
 
-	private final String id;
+	private String id;
 	
 	private String description;
 	
@@ -25,7 +25,13 @@ public final class DefaultProduct implements Product {
 	}
 
 	@Override
-	public void setDescription(String text) {
-		this.description = text;
+	public Product setDescription(String text) {
+		this.description = text;		
+		return this;
+	}
+	
+	public Product setID(String identifiant){
+		this.id = identifiant;		
+		return this;
 	}
 }
