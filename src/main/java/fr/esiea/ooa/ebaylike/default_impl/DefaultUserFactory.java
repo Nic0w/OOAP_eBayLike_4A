@@ -8,6 +8,7 @@ import fr.esiea.ooa.ebaylike.api.Bid;
 import fr.esiea.ooa.ebaylike.api.User;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.factory.UserFactory;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
 
 /**
@@ -16,18 +17,18 @@ import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
  */
 public class DefaultUserFactory implements UserFactory {
 
-	private final Persistor<Bid, BidFactory> bidPersistor;
+	private final PersistenceAgent bidStorage;
 	
 	/**
 	 * 
 	 */
-	public DefaultUserFactory(Persistor<Bid, BidFactory> persistor) {
-		this.bidPersistor = persistor;
+	public DefaultUserFactory(PersistenceAgent storage) {
+		this.bidStorage = storage;
 	}
 	
 	@Override
 	public User createNewUser(String login, String name, String forename) {
-		return new DefaultUser(this.bidPersistor, login, name, forename);
+		return new DefaultUser(this.bidStorage, login, name, forename);
 	}
 
 }

@@ -11,6 +11,8 @@ import fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException;
 import fr.esiea.ooa.ebaylike.api.factory.UserFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultUserFactory;
+import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
 
 /**
  * @author nic0w
@@ -18,16 +20,42 @@ import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
  */
 public class BidPlatform {
 
+	private static BidPlatform defaultImpl = null;
+	
 	private final PersistenceAgent storage;
 	
 	private final UserFactory userFactory;
 	
-	BidPlatform(PersistenceAgent agent, UserFactory userFactory) {
+	public BidPlatform(PersistenceAgent agent, UserFactory userFactory) {
 		
 		this.storage = agent;
 		this.userFactory = userFactory;
 	}
 
+	public static BidPlatform getDefaultInstance() {
+		return getDefaultInstance(false);
+	}
+	
+	public static BidPlatform getDefaultInstance(boolean newInstance) {
+		
+		BidPlatform instance;
+		
+		if(newInstance || defaultImpl == null) {
+			
+			PersistenceAgent storage = new JavaCollectionsPersistenceAgent();
+			UserFactory factory      = new DefaultUserFactory(storage);
+		
+			instance =  new BidPlatform(storage, factory);
+			
+			if(!newInstance) 
+				defaultImpl = instance;
+		}
+		else
+			instance = defaultImpl;
+
+		return instance;
+	}
+	
 	/**
 	 * Creates a new user in the system
 	 * 

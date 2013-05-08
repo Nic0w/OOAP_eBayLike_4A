@@ -7,6 +7,7 @@ import fr.esiea.ooa.ebaylike.api.Bid;
 import fr.esiea.ooa.ebaylike.api.PersistentUser;
 import fr.esiea.ooa.ebaylike.api.event.BidAlert;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
 
 /**
@@ -16,13 +17,13 @@ import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
 public class DefaultUser extends PersistentUser {
 
 	/**
-	 * @param bidPersistor
+	 * @param bidStorage
 	 * @param login
 	 * @param firstname
 	 * @param lastname
 	 */
-	public DefaultUser(Persistor<Bid, BidFactory> bidPersistor, String login, String firstname, String lastname) {
-		super(bidPersistor, login, firstname, lastname);
+	public DefaultUser(PersistenceAgent bidStorage, String login, String firstname, String lastname) {
+		super(bidStorage, login, firstname, lastname);
 
 		
 		
