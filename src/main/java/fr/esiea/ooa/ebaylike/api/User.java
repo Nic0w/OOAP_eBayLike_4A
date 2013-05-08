@@ -6,8 +6,19 @@ import fr.esiea.ooa.ebaylike.api.event.AlertType;
 
 public interface User extends Buyer, Seller {
 
-	public String getFirstName();	
+	/**
+	 * @return
+	 */
+	public String getFirstName();
+	
+	/**
+	 * @return
+	 */
 	public String getLastName();	
+	
+	/**
+	 * @return
+	 */
 	public String getLogin();
 	
 	

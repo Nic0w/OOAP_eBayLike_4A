@@ -10,7 +10,6 @@ import fr.esiea.ooa.ebaylike.api.User;
 import fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException;
 import fr.esiea.ooa.ebaylike.api.factory.UserFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
 import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
 
 /**
@@ -19,10 +18,14 @@ import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
  */
 public class BidPlatform {
 
-	private final PersistenceAgent persistenceAgent;
+	private final PersistenceAgent storage;
 	
-	BidPlatform(PersistenceAgent agent) {
-		this.persistenceAgent = agent;
+	private final UserFactory userFactory;
+	
+	BidPlatform(PersistenceAgent agent, UserFactory userFactory) {
+		
+		this.storage = agent;
+		this.userFactory = userFactory;
 	}
 
 	/**
@@ -37,16 +40,14 @@ public class BidPlatform {
 	 */
 	public User newUser(String login, String name, String forename) throws UserAlreadyExistsException, StorageException {
 		
-		Persistor<User, UserFactory> userPersistor = this.persistenceAgent.getUserPersistor();
-		
 		User user = null;
 		
-		if((user = userPersistor.get(login)) != null)
+		if((user = storage.get(User.class, login)) != null)
 			throw new UserAlreadyExistsException(user);
 			
-		user = userPersistor.getFactory().createNewUser(login, name, forename);
+		user = this.userFactory.createNewUser(login, name, forename);
 		
-		userPersistor.store(user);
+		storage.store(user.getLogin(), user);
 		
 		return user;
 	}

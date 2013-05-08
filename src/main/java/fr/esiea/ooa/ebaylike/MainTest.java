@@ -16,7 +16,21 @@ public class MainTest {
 		
 		PersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
 		
-		BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
+		storageAgent.store("noob", "Nic0w");
+		storageAgent.store("1235", "Bouyaka");
+		storageAgent.store(3, "Thuma");
+		storageAgent.store("noob", 5.3);
+		
+		System.out.println(storageAgent.get(String.class, "noob"));
+		System.out.println(storageAgent.get(Double.class, "noob"));
+		System.out.println(storageAgent.get(String.class, 3));
+		
+		for(Double s : storageAgent.getAll(Double.class)) {
+			System.out.println(s);
+		}
+		
+		
+		/*BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
 		
 		try {
 			User u = bidPlatform.newUser("noob", "Noob", "Noob");
@@ -32,7 +46,7 @@ public class MainTest {
 		} catch (UserAlreadyExistsException | StorageException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 

@@ -33,7 +33,12 @@ public abstract class AbstractUser implements User {
 	}
 	
 	@Override
-	public void subscribeToAlerts(Bid bid, AlertType... alerts) {
+	public final void subscribeToAlerts(Bid bid, AlertType... alerts) {
 		bid.registerAlertListener(this, alerts);
+	}
+
+	@Override
+	public final Bid publishBid(Bid bid) {
+		return bid.publishIt(this);
 	}
 }

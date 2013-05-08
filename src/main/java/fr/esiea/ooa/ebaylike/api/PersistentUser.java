@@ -33,7 +33,9 @@ public abstract class PersistentUser extends AbstractUser {
 
 	@Override
 	public final Bid createBid(Product p, Date limit) {
-		// TODO Auto-generated method stub
+		
+		
+		
 		return null;
 	}
 

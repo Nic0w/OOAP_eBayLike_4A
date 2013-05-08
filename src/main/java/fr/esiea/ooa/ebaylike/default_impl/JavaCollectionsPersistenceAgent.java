@@ -5,6 +5,10 @@ package fr.esiea.ooa.ebaylike.default_impl;
 
 
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 import fr.esiea.ooa.ebaylike.api.Bid;
 import fr.esiea.ooa.ebaylike.api.User;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
@@ -18,29 +22,42 @@ import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
  */
 public class JavaCollectionsPersistenceAgent implements PersistenceAgent {
 
-	private final Persistor<User, UserFactory> userPersistor;
-	private final Persistor<Bid, BidFactory> bidPersistor;
-	/**
-	 * 
-	 */
+	private final Map<Class<?>, Map<Object, Object>> database;
+	
 	public JavaCollectionsPersistenceAgent() {
 		
-		this.bidPersistor = new MapBidPersistor();
+		this.database = new HashMap<>(4);
+	}
+	
+	
+	@Override
+	public <T> void store(Object key, T value) {
 		
-		UserFactory userFactory = new DefaultUserFactory(this.bidPersistor);
+		Class<?> clazz = value.getClass();
 		
-		this.userPersistor = new MapUserPersistor(userFactory);
+		if(this.database.get(clazz) == null)
+			this.database.put(clazz, new HashMap<>());
 		
+		this.database.get(clazz).put(key, value);
 	}
 
 	@Override
-	public Persistor<User, UserFactory> getUserPersistor() {
-		return this.userPersistor;
+	public <T> T get(Class<T> clazz, Object key) {
+
+		return (T) this.database.get(clazz).get(key);
 	}
 
 	@Override
-	public Persistor<Bid, BidFactory> getBidPersistor() {
-		return this.bidPersistor;
+	public <T> Collection<T> getAll(Class<T> clazz) {
+		return (Collection<T>) this.database.get(clazz).values();
 	}
+
+	@Override
+	public <T> boolean remove(Class<T> clazz, Object key) {
+	
+		return this.database.get(clazz).remove(key) != null;
+	}
+
+
 
 }
