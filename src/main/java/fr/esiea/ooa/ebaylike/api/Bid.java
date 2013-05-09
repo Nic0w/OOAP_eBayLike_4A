@@ -7,10 +7,19 @@ import fr.esiea.ooa.ebaylike.api.exception.BadSellerException;
 import fr.esiea.ooa.ebaylike.api.exception.IllegalActionException;
 
 
+/**
+ * 
+ * @author Nicolas Remi Romain
+ * 
+ *
+ */
+
 public interface Bid {
 
 		/**
+		 * 
 		 * @return
+		 * 
 		 */
 		public Bid publishIt(Seller s);
 		
@@ -43,21 +52,78 @@ public interface Bid {
 		 */
 		public Bid registerAlertListener(User user, AlertType... alerts);
 		
+		/**
+		 * add an offer to an Bid
+		 * 
+		 * @param o the offer to add
+		 */
 		public void addOffer(Offer o);
 		
+		/**
+		 * 
+		 * return the state of a Bid : is it finished or not?
+		 * 
+		 * @return true or false
+		 */
 		public boolean isFinished();
 		
+		/**
+		 * 
+		 * return the state of a Bid : is it published or not?
+		 * 
+		 * @return true or false
+		 */
 		public boolean isPublished();
 		
+		/**
+		 * 
+		 * return the state of a Bid : is it cancelled or not?
+		 * 
+		 * @return true or false
+		 */
 		public boolean isCancelled();
 		
+		/**
+		 * 
+		 * return true if the Reserve Price of the Bid has benn reached
+		 * return false if not
+		 * 
+		 * @return true or false
+		 */
 		public boolean hasReservePriceBeenReached();
 
+		/**
+		 * 
+		 * this method return the product of the Bid
+		 * 
+		 * @return the Product of a Bid
+		 */
 		public Product getProduct();
 		
+		/**
+		 * 
+		 * 
+		 * the method return the limit Date of a Bid 
+		 * after this date nobody can makes offer on  bid
+		 * 
+		 * @return the limit Date of a Bid
+		 */
 		public Date getLimitDate();
 				
+		/**
+		 * 
+		 * the method return the minimum price of a Bid
+		 * ( this minimum price has been set by the seller )
+		 * 
+		 * @return the Minimum price of a Bid
+		 */
 		public float getMinPrice();
 		
+		/**
+		 * 
+		 * this method return the last offer price
+		 * 
+		 * @return the last offer Price
+		 */
 		public float getLastOfferPrice();
 }
