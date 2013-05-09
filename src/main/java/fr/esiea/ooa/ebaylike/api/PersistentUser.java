@@ -42,7 +42,7 @@ public abstract class PersistentUser extends AbstractUser {
 		Bid newBid = this.bidFactory.createBid(p, limit, minPrice);
 		
 		this.bidStorage.store(p.getID(), newBid);
-		
+				
 		return newBid;
 	}
 

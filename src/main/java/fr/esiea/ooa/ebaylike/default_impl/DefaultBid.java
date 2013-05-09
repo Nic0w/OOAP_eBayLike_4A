@@ -17,7 +17,7 @@ public class DefaultBid extends AbstractBid {
 	@Override
 	public void addOffer(Offer o) {
 		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override

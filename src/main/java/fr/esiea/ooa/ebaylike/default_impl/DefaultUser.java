@@ -47,9 +47,7 @@ public class DefaultUser extends PersistentUser {
 	public void bidStateChanged(BidAlert alert) {
 		
 		
-		
-		
-		
+			
 	}
 
 	@Override

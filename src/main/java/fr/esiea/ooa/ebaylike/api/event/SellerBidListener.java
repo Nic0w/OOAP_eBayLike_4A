@@ -7,4 +7,5 @@ public interface SellerBidListener {
 
 	public void receivedNewOffer(Bid bid, Offer newOffer);
 	
+	
 }
