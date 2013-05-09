@@ -4,19 +4,24 @@ import java.util.Date;
 
 import fr.esiea.ooa.ebaylike.api.AbstractBid;
 import fr.esiea.ooa.ebaylike.api.Offer;
+import fr.esiea.ooa.ebaylike.api.PersistentBid;
 import fr.esiea.ooa.ebaylike.api.Product;
 import fr.esiea.ooa.ebaylike.api.Seller;
+import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
-public class DefaultBid extends AbstractBid {
+public class DefaultBid extends PersistentBid {
 
-	protected DefaultBid(Seller seller, Product product, Date limit) {
-		super(seller, product, limit);
-		// TODO Auto-generated constructor stub
+	public DefaultBid(PersistenceAgent storage, OfferFactory offer, Seller seller, Product product, Date limit) {
+		super(storage, offer, seller, product, limit);
+		
+		
+		
+		
 	}
 
 	@Override
 	public void addOffer(Offer o) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -25,9 +30,5 @@ public class DefaultBid extends AbstractBid {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	
-	
-	
 
 }

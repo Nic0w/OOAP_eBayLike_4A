@@ -7,6 +7,7 @@ package fr.esiea.ooa.ebaylike.default_impl;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;

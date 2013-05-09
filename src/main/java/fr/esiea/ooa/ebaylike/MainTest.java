@@ -1,5 +1,10 @@
 package fr.esiea.ooa.ebaylike;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import fr.esiea.ooa.ebaylike.api.Bid;
+import fr.esiea.ooa.ebaylike.api.User;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
 
@@ -12,28 +17,29 @@ public class MainTest {
 		
 		PersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
 		
-		storageAgent.store("noob", "Nic0w");
-		storageAgent.store("1235", "Bouyaka");
-		storageAgent.store(3, "Thuma");
-		storageAgent.store("noob", 5.3);
+		storageAgent.store("noob", new ArrayList<String>());
 		
-		System.out.println(storageAgent.get(String.class, "noob"));
-		System.out.println(storageAgent.get(Double.class, "noob"));
-		System.out.println(storageAgent.get(String.class, 3));
 		
-		for(Double s : storageAgent.getAll(Double.class)) {
+		ArrayList<String> strings = storageAgent.get(ArrayList.class, "noob");
+		
+		strings.add("OMG1");
+		strings.add("OMG2");
+		
+		ArrayList<String> strings2 = storageAgent.get(ArrayList.class, "noob");
+		
+		for(String s : strings2) {
 			System.out.println(s);
 		}
 		
 		
-		/*BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
+		/*BidPlatform bidPlatform = BidPlatform.getDefaultInstance();
 		
 		try {
 			User u = bidPlatform.newUser("noob", "Noob", "Noob");
 			
 			System.out.println(u);
 			
-			Bid b = u.createBid(null, null).setMinimumPrice(0).setReservePrice(0).publishIt();
+			Bid b = u.createBid(null, null);
 			
 			
 			
