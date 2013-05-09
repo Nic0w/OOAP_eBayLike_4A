@@ -1,7 +1,9 @@
 package fr.esiea.ooa.ebaylike.api;
 
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
+import fr.esiea.ooa.ebaylike.api.event.BuyerBidListener;
 
+<<<<<<< HEAD
 /**
  * 
  * this interface declare method that will be used only by buyer
@@ -11,6 +13,9 @@ import fr.esiea.ooa.ebaylike.api.event.AlertType;
  *
  */
 public interface Buyer {
+=======
+public interface Buyer extends BuyerBidListener {
+>>>>>>> branch 'master' of https://github.com/Nic0w/OOAP_eBayLike_4A.git
 
 	/**
 	 * 
@@ -32,6 +37,5 @@ public interface Buyer {
 	 * @param alerts
 	 */
 	public void subscribeToAlerts(Bid bid, AlertType ...alerts);
-	
 	
 }

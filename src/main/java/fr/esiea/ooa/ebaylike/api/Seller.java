@@ -4,11 +4,11 @@ import java.util.Date;
 
 import fr.esiea.ooa.ebaylike.api.event.SellerBidListener;
 
-
 /**
  * @author Nicolas Remi Romain
  *
  */
+
 public interface Seller extends SellerBidListener {
 
 	/**
@@ -39,8 +39,6 @@ public interface Seller extends SellerBidListener {
 	 * call this method to published a Bid
 	 * 
 	 * @param bid
-	 * @return
 	 */
-	public Bid publishBid(Bid bid);
-
+	public void publishBid(Bid bid);
 }
