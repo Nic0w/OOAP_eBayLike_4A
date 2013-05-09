@@ -8,7 +8,6 @@ import java.util.Date;
 import fr.esiea.ooa.ebaylike.api.event.BidAlert;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
 
 /**
  * @author nic0w

@@ -1,10 +1,6 @@
 package fr.esiea.ooa.ebaylike;
 
-import fr.esiea.ooa.ebaylike.api.Bid;
-import fr.esiea.ooa.ebaylike.api.User;
-import fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
 import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
 
 public class MainTest {

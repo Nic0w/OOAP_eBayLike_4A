@@ -6,9 +6,7 @@ package fr.esiea.ooa.ebaylike.default_impl;
 import fr.esiea.ooa.ebaylike.api.Bid;
 import fr.esiea.ooa.ebaylike.api.PersistentUser;
 import fr.esiea.ooa.ebaylike.api.event.BidAlert;
-import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
 
 /**
  * @author nic0w

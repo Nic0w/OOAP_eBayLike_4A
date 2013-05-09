@@ -9,12 +9,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.esiea.ooa.ebaylike.api.Bid;
-import fr.esiea.ooa.ebaylike.api.User;
-import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
-import fr.esiea.ooa.ebaylike.api.factory.UserFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
 
 /**
  * @author nic0w

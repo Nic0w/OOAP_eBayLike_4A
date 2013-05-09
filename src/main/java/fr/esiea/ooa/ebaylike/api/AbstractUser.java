@@ -4,7 +4,6 @@ import java.util.Date;
 
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
-import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
 
 public abstract class AbstractUser implements User {
 
