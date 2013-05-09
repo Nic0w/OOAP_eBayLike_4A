@@ -37,7 +37,9 @@ public abstract class AbstractUser implements User {
 	}
 
 	@Override
-	public final Bid publishBid(Bid bid) {
-		return bid.publishIt(this);
+	public final void publishBid(Bid bid) {
+		bid.publishIt(this);
 	}
+	
+	
 }

@@ -53,6 +53,4 @@ public class JavaCollectionsPersistenceAgent implements PersistenceAgent {
 		return this.database.get(clazz).remove(key) != null;
 	}
 
-
-
 }
