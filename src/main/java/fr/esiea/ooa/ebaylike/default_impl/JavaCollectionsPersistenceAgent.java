@@ -12,7 +12,7 @@ import java.util.Map;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 /**
- * @author nic0w
+ * @author Nicolas Remi Romain
  *
  */
 public class JavaCollectionsPersistenceAgent implements PersistenceAgent {

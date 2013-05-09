@@ -3,6 +3,10 @@ package fr.esiea.ooa.ebaylike.default_impl;
 import fr.esiea.ooa.ebaylike.api.Product;
 
 
+/**
+ * @author Nicolas Remi Romain
+ *
+ */
 public final class DefaultProduct implements Product {
 
 	private String id;

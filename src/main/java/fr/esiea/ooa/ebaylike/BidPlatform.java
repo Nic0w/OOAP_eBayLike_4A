@@ -17,7 +17,8 @@ import fr.esiea.ooa.ebaylike.default_impl.DefaultUserFactory;
 import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
 
 /**
- * @author nic0w
+ * 
+ * @author Nicolas Remi Romain
  *
  */
 public class BidPlatform {
@@ -83,6 +84,12 @@ public class BidPlatform {
 		return user;
 	}
 	
+	/**
+	 * 
+	 * return all the bids
+	 * 
+	 * @return List<Bid>
+	 */
 	public List<Bid> getPublishedBids() {
 		return null;
 	}

@@ -7,6 +7,10 @@ import fr.esiea.ooa.ebaylike.api.Offer;
 import fr.esiea.ooa.ebaylike.api.Product;
 import fr.esiea.ooa.ebaylike.api.Seller;
 
+/**
+ * @author Nicolas Remi Romain
+ *
+ */
 public class DefaultBid extends AbstractBid {
 
 	protected DefaultBid(Seller seller, Product product, Date limit) {

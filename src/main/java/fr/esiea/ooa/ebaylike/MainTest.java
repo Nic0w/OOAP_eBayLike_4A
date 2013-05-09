@@ -6,6 +6,9 @@ import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
 public class MainTest {
 
 	/**
+	 * 
+	 * main test
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
