@@ -10,7 +10,7 @@ import fr.esiea.ooa.ebaylike.api.Product;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 
 /**
- * @author nic0w
+ * @author Nicolas Remi Romain
  *
  */
 public class DefaultBidFactory implements BidFactory {

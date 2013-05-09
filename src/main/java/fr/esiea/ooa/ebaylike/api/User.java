@@ -4,20 +4,34 @@ import fr.esiea.ooa.ebaylike.api.event.AlertType;
 
 
 
+/**
+ * @author Nicolas Remi Romain
+ *
+ */
+
 public interface User extends Buyer, Seller {
 
 	/**
-	 * @return
+	 * 
+	 * this method return the First name of an user
+	 * 
+	 * @return the first name of an User
 	 */
 	public String getFirstName();
 	
 	/**
-	 * @return
+	 * 
+	 * this method return the Last name of an user
+	 * 
+	 * @return the last name of an user
 	 */
 	public String getLastName();	
 	
 	/**
-	 * @return
+	 * 
+	 * this method return the login of an user
+	 * 
+	 * @return the login of an user
 	 */
 	public String getLogin();
 	

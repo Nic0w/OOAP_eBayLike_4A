@@ -9,7 +9,7 @@ import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 /**
- * @author nic0w
+ * @author Nicolas Remi Romain
  *
  */
 public class PersistentBid extends AbstractBid {

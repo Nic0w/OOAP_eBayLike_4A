@@ -4,7 +4,12 @@ import java.util.Date;
 
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
+import fr.esiea.ooa.ebaylike.api.persistence.Persistor;
 
+/**
+ * @author Nicolas Remi Romain
+ *
+ */
 public abstract class AbstractUser implements User {
 
 	private final String login;
@@ -37,9 +42,7 @@ public abstract class AbstractUser implements User {
 	}
 
 	@Override
-	public final void publishBid(Bid bid) {
-		bid.publishIt(this);
+	public final Bid publishBid(Bid bid) {
+		return bid.publishIt(this);
 	}
-	
-	
 }
