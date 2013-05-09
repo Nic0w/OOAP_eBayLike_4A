@@ -1,10 +1,11 @@
 package fr.esiea.ooa.ebaylike.api;
 
-import java.util.Date;
-
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
-import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 
+/**
+ * @author Nicolas Remi Romain
+ *
+ */
 public abstract class AbstractUser implements User {
 
 	private final String login;
@@ -40,6 +41,4 @@ public abstract class AbstractUser implements User {
 	public final void publishBid(Bid bid) {
 		bid.publishIt(this);
 	}
-	
-	
 }

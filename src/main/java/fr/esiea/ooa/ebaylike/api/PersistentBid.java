@@ -11,7 +11,7 @@ import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 /**
- * @author nic0w
+ * @author Nicolas Remi Romain
  *
  */
 public class PersistentBid extends AbstractBid {
@@ -38,7 +38,7 @@ public class PersistentBid extends AbstractBid {
 		LinkedList<Offer> offers = this.storage.get(LinkedList.class, this.getProduct().getID());
 		
 		offers.add(o);
-
+		
 	}
 
 

@@ -22,7 +22,8 @@ import fr.esiea.ooa.ebaylike.default_impl.factory.DefaultProductFactory;
 import fr.esiea.ooa.ebaylike.default_impl.factory.DefaultUserFactory;
 
 /**
- * @author nic0w
+ * 
+ * @author Nicolas Remi Romain
  *
  */
 public class BidPlatform {
@@ -98,6 +99,12 @@ public class BidPlatform {
 		return this.productFactory.createNewProduct(description);
 	}
 	
+	/**
+	 * 
+	 * return all the bids
+	 * 
+	 * @return List<Bid>
+	 */
 	public List<Bid> getPublishedBids() {
 		return null;
 	}

@@ -5,6 +5,10 @@ import fr.esiea.ooa.ebaylike.api.Buyer;
 import fr.esiea.ooa.ebaylike.api.Offer;
 
 
+/**
+ * @author Nicolas Remi Romain
+ *
+ */
 public class DefaultOffer extends AbstractOffer {
 
 	

@@ -12,7 +12,7 @@ import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 /**
- * @author nic0w
+ * @author Nicolas Remi Romain
  *
  */
 public class DefaultUser extends PersistentUser {
@@ -48,9 +48,7 @@ public class DefaultUser extends PersistentUser {
 	public void bidStateChanged(BidAlert alert) {
 		
 		
-		
-		
-		
+			
 	}
 
 	@Override

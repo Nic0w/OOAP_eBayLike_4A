@@ -9,7 +9,7 @@ import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 /**
- * @author nic0w
+ * @author Nicolas Remi Romain
  *
  */
 public abstract class PersistentUser extends AbstractUser {
@@ -42,7 +42,7 @@ public abstract class PersistentUser extends AbstractUser {
 		Bid newBid = this.bidFactory.createBid(p, limit, minPrice);
 		
 		this.bidStorage.store(p.getID(), newBid);
-		
+				
 		return newBid;
 	}
 

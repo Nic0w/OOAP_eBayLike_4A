@@ -10,6 +10,10 @@ import fr.esiea.ooa.ebaylike.api.Seller;
 import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
+/**
+ * @author Nicolas Remi Romain
+ *
+ */
 public class DefaultBid extends PersistentBid {
 
 	public DefaultBid(PersistenceAgent storage, OfferFactory offer, Seller seller, Product product, Date limit) {
@@ -22,7 +26,7 @@ public class DefaultBid extends PersistentBid {
 
 	@Override
 	public void addOffer(Offer o) {
-		
+	
 	}
 
 	@Override
