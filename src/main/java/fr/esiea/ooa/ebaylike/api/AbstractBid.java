@@ -9,6 +9,10 @@ import fr.esiea.ooa.ebaylike.api.exception.BadSellerException;
 import fr.esiea.ooa.ebaylike.api.exception.IllegalActionException;
 
 
+/**
+ * @author Nicolas Remi Romain
+ *
+ */
 public abstract class AbstractBid implements Bid {
 
 	private final Date limitDate;
@@ -28,7 +32,16 @@ public abstract class AbstractBid implements Bid {
 		this.bidState = BidState.CREATED;
 	}
 	
-	protected final boolean sellerIsOK(Seller s) throws IllegalActionException {
+	/**
+	 * 
+	 * test if the seller who wants to change properties of a Bid
+	 * is the one who created it
+	 * 
+	 * @param s the Seller
+	 * @return true
+	 * @throws BadSellerException
+	 */
+	protected final boolean sellerIsOK(Seller s) throws BadSellerException {
 		
 		if(!this.seller.equals(s)) 
 			throw new BadSellerException(String.format("Seller %s is not the one who created this bid.", s));
@@ -36,6 +49,13 @@ public abstract class AbstractBid implements Bid {
 			return true;
 	}
 	
+	/**
+	 * 
+	 * test is the price is >0
+	 * 
+	 * @param price
+	 * @return true
+	 */
 	protected final boolean priceIsOK(float price) {
 		
 		if(price <= 0.0f) 
