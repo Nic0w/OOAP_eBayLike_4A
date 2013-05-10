@@ -24,18 +24,8 @@ public class DefaultUser extends PersistentUser {
 	 * @param lastname
 	 */
 	public DefaultUser(PersistenceAgent bidStorage, BidFactory bidFactory, OfferFactory offerFactory,  String login, String firstname, String lastname) {
-		super(bidStorage, bidFactory, login, firstname, lastname);
+		super(bidStorage, bidFactory,  offerFactory, login, firstname, lastname);
 
-		
-		
-	}
-
-	@Override
-	public void bid(Bid bid, float price) {
-
-		//bid.addOffer(o);
-		
-		
 	}
 
 	@Override

@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import fr.esiea.ooa.ebaylike.api.Bid;
+import fr.esiea.ooa.ebaylike.api.Product;
 import fr.esiea.ooa.ebaylike.api.User;
+import fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
+import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
 import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
 
 public class MainTest {
@@ -20,7 +23,9 @@ public class MainTest {
 		
 		PersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
 		
-		storageAgent.store("noob", new ArrayList<String>());
+		/*ArrayList<String> omg = new ArrayList<String>();
+		
+		storageAgent.store("noob", omg);
 		
 		
 		ArrayList<String> strings = storageAgent.get(ArrayList.class, "noob");
@@ -30,20 +35,23 @@ public class MainTest {
 		
 		ArrayList<String> strings2 = storageAgent.get(ArrayList.class, "noob");
 		
-		for(String s : strings2) {
+		for(String s : omg) {
 			System.out.println(s);
-		}
+		}*/
 		
 		
-		/*BidPlatform bidPlatform = BidPlatform.getDefaultInstance();
+		BidPlatform bidPlatform = BidPlatform.getDefaultInstance();
 		
 		try {
 			User u = bidPlatform.newUser("noob", "Noob", "Noob");
 			
+			Product p = bidPlatform.newProduct("Une chaise en bois");
+			
 			System.out.println(u);
 			
-			Bid b = u.createBid(null, null);
+			Bid b = u.createBid(p, null);
 			
+			System.out.println(b);
 			
 			
 			u.bid(b, 0);
@@ -51,7 +59,7 @@ public class MainTest {
 		} catch (UserAlreadyExistsException | StorageException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 
 	}
 

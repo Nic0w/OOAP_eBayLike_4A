@@ -7,7 +7,10 @@ import java.util.Date;
 
 import fr.esiea.ooa.ebaylike.api.Bid;
 import fr.esiea.ooa.ebaylike.api.Product;
+import fr.esiea.ooa.ebaylike.api.Seller;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultBid;
 
 /**
  * @author nic0w
@@ -15,25 +18,26 @@ import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
  */
 public class DefaultBidFactory implements BidFactory {
 
-	/**
-	 * 
-	 */
-	public DefaultBidFactory() {
-		// TODO Auto-generated constructor stub
+	private final PersistenceAgent offerStorage;
+
+	public DefaultBidFactory(PersistenceAgent storage) {
+		this.offerStorage = storage;
 	}
 
 	@Override
-	public Bid createBid(Product p, Date limit) {
-		// TODO Auto-generated method stub
-		return null;
+	public Bid createBid(Seller s, Product p, Date limit) {
+		return new DefaultBid(this.offerStorage, s, p, limit);
 	}
 
 	@Override
-	public Bid createBid(Product p, Date limit, float minPrice) {
-		// TODO Auto-generated method stub
-		return null;
+	public Bid createBid(Seller s, Product p, Date limit, float minPrice) {
+		return this.createBid(s, p, limit).
+						setMinimumPrice(s, minPrice);
 	}
 
-
-
+	@Override
+	public Bid createBid(Seller s, Product p, Date limit, float minPrice, float reservePrice) {
+		return this.createBid(s, p, limit, minPrice).
+						setReservePrice(s, reservePrice);
+	}
 }

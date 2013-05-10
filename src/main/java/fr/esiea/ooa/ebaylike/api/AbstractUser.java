@@ -1,6 +1,10 @@
 package fr.esiea.ooa.ebaylike.api;
 
+import java.util.Date;
+
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
+import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
+import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 
 /**
  * @author Nicolas Remi Romain
@@ -12,13 +16,32 @@ public abstract class AbstractUser implements User {
 	private final String firstName;
 	private final String lastName;
 	
-	protected AbstractUser(String login, String firstname, String lastname) {
+	private final BidFactory bidFactory;
+	private final OfferFactory offerFactory;
+	
+	protected AbstractUser(BidFactory bidFactory, OfferFactory offerFactory, String login, String firstname, String lastname) {
 		
 		this.login = login;
 		this.firstName = firstname;
 		this.lastName = lastname;
+		
+		this.bidFactory = bidFactory;
+		this.offerFactory = offerFactory;
 	}
 	
+	@Override
+	public Bid createBid(Product p, Date limit, float minPrice) {
+		return this.bidFactory.createBid(this, p, limit, minPrice);
+	}
+	
+	@Override
+	public final void bid(Bid bid, float price) {
+		
+		Offer o = this.offerFactory.createNewOffer(this, price);
+		
+		bid.addOffer(o);
+	}
+
 	@Override
 	public final String getFirstName() {
 		return this.firstName;

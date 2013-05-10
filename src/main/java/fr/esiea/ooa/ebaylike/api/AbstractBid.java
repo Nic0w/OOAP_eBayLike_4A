@@ -58,7 +58,7 @@ public abstract class AbstractBid implements Bid {
 	 */
 	protected final boolean priceIsOK(float price) {
 		
-		if(price <= 0.0f) 
+		if(price < 0.0f) 
 			throw new IllegalArgumentException(String.format("Price value cannot be negative : price=%f.", price));
 		else
 			return true;

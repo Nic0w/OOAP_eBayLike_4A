@@ -40,7 +40,13 @@ public class JavaCollectionsPersistenceAgent implements PersistenceAgent {
 	@Override
 	public <T> T get(Class<T> clazz, Object key) {
 
-		return (T) this.database.get(clazz).get(key);
+		Map<Object, Object> table = this.database.get(clazz);
+		
+		if(table == null) return null;
+		
+		Object value = table.get(key);
+		
+		return value == null ? null : (T) value;
 	}
 
 	@Override

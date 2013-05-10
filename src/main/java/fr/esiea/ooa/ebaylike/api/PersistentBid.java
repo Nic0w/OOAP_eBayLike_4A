@@ -23,7 +23,7 @@ public class PersistentBid extends AbstractBid {
 	 * @param product
 	 * @param limit
 	 */
-	public PersistentBid(PersistenceAgent storage, OfferFactory offer, Seller seller, Product product, Date limit) {
+	public PersistentBid(PersistenceAgent storage, Seller seller, Product product, Date limit) {
 		super(seller, product, limit);
 	
 		this.storage = storage;
@@ -41,11 +41,12 @@ public class PersistentBid extends AbstractBid {
 		
 	}
 
-
 	@Override
-	public float getLastOfferPrice() {
-		// TODO Auto-generated method stub
-		return 0;
+	public final float getLastOfferPrice() {
+		
+		LinkedList<Offer> offers = this.storage.get(LinkedList.class, this.getProduct().getID());
+		
+		return offers.getLast().getPrice();
 	}
 
 }

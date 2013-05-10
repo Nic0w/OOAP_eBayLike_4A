@@ -55,7 +55,7 @@ public class BidPlatform {
 			PersistenceAgent storage = new JavaCollectionsPersistenceAgent();
 			
 			ProductFactory productFactory = new DefaultProductFactory();
-			BidFactory	bidFactory        = new DefaultBidFactory();
+			BidFactory	bidFactory        = new DefaultBidFactory(storage);
 			OfferFactory offerFactory     = new DefaultOfferFactory();
 			
 			UserFactory userFactory  = new DefaultUserFactory(storage, bidFactory, offerFactory);

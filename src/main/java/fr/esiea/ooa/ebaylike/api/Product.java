@@ -28,15 +28,6 @@ public interface Product {
 	 * @param text
 	 * @return the Product
 	 */
-	public Product setDescription(String text);
-	
-	/**
-	 * 
-	 * to set the "identifiant" of a product
-	 * 
-	 * @param identifiant
-	 * @return the Product
-	 */
-	public Product setID(String identifiant);
+	public void setDescription(String text);
 	
 }

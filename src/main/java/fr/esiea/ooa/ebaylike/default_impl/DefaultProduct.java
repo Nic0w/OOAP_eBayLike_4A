@@ -9,11 +9,11 @@ import fr.esiea.ooa.ebaylike.api.Product;
  */
 public final class DefaultProduct implements Product {
 
-	private String id;
+	private final String id;
 	
 	private String description;
 	
-	DefaultProduct(String id, String desc) {
+	public DefaultProduct(String id, String desc) {
 		this.id = id;
 		this.description = desc;
 	}
@@ -29,13 +29,7 @@ public final class DefaultProduct implements Product {
 	}
 
 	@Override
-	public Product setDescription(String text) {
+	public void setDescription(String text) {
 		this.description = text;		
-		return this;
-	}
-	
-	public Product setID(String identifiant){
-		this.id = identifiant;		
-		return this;
 	}
 }
