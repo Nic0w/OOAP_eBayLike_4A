@@ -8,6 +8,7 @@ import fr.esiea.ooa.ebaylike.api.Offer;
 import fr.esiea.ooa.ebaylike.api.PersistentUser;
 import fr.esiea.ooa.ebaylike.api.event.BidAlert;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
+import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 /**
@@ -22,19 +23,9 @@ public class DefaultUser extends PersistentUser {
 	 * @param firstname
 	 * @param lastname
 	 */
-	public DefaultUser(PersistenceAgent bidStorage, BidFactory bidFactory, String login, String firstname, String lastname) {
-		super(bidStorage, bidFactory, login, firstname, lastname);
+	public DefaultUser(PersistenceAgent bidStorage, BidFactory bidFactory, OfferFactory offerFactory,  String login, String firstname, String lastname) {
+		super(bidStorage, bidFactory,  offerFactory, login, firstname, lastname);
 
-		
-		
-	}
-
-	@Override
-	public void bid(Bid bid, float price) {
-
-		//bid.addOffer(o);
-		
-		
 	}
 
 	@Override
