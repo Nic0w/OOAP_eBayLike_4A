@@ -22,6 +22,7 @@ public abstract class AbstractBid implements Bid {
 	private BidState bidState;
 	private float minPrice;
 	private float reservePrice;
+
 	
 	protected AbstractBid(Seller seller, Product product, Date limit) {
 		
@@ -137,4 +138,9 @@ public abstract class AbstractBid implements Bid {
 		return null;
 	}
 
+	public void addOffer(Offer o) {
+		
+		seller.receivedNewOffer(this, o);
+		
+	}
 }
