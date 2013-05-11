@@ -41,7 +41,7 @@ public abstract class AbstractBid implements Bid {
 	 * @return true
 	 * @throws BadSellerException
 	 */
-	protected final boolean sellerIsOK(Seller s) throws BadSellerException {
+	private final boolean sellerIsOK(Seller s) throws BadSellerException {
 		
 		if(!this.seller.equals(s)) 
 			throw new BadSellerException(String.format("Seller %s is not the one who created this bid.", s));
@@ -56,12 +56,20 @@ public abstract class AbstractBid implements Bid {
 	 * @param price
 	 * @return true
 	 */
-	protected final boolean priceIsOK(float price) {
+	private final boolean priceIsOK(float price) {
 		
 		if(price < 0.0f) 
 			throw new IllegalArgumentException(String.format("Price value cannot be negative : price=%f.", price));
 		else
 			return true;
+	}
+	
+	protected final Seller getSeller() {
+		return this.seller;
+	}
+	
+	protected final float getReservePrice() {
+		return this.reservePrice;
 	}
 	
 	@Override
@@ -92,6 +100,8 @@ public abstract class AbstractBid implements Bid {
 	public final Bid cancelIt(Seller seller) throws BadSellerException {
 		
 		if(sellerIsOK(seller)) this.bidState = BidState.CANCELLED;
+		
+		this.fireBidCancelled();
 		
 		return this;
 	}
@@ -132,9 +142,13 @@ public abstract class AbstractBid implements Bid {
 	}
 	
 	@Override
-	public Bid registerAlertListener(User user, AlertType... alerts) {
-		// TODO Auto-generated method stub
-		return null;
+	public void addOffer(Offer o) {
+		this.seller.receivedNewOffer(this, o);
 	}
-
+	
+	protected abstract void fireReservePriceReached();
+	
+	protected abstract void fireBidCancelled();
+	
+	protected abstract void fireHigherOffer();
 }

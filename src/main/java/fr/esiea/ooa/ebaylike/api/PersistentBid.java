@@ -5,8 +5,10 @@ package fr.esiea.ooa.ebaylike.api;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.EnumMap;
 import java.util.LinkedList;
 
+import fr.esiea.ooa.ebaylike.api.event.AlertType;
 import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
@@ -14,7 +16,7 @@ import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
  * @author Nicolas Remi Romain
  *
  */
-public class PersistentBid extends AbstractBid {
+public abstract class PersistentBid extends AbstractBid {
 
 	private final PersistenceAgent storage;
 	
@@ -28,7 +30,8 @@ public class PersistentBid extends AbstractBid {
 	
 		this.storage = storage;
 		
-		storage.store(product.getID(), new LinkedList<Offer>());
+		if(storage.get(LinkedList.class, product.getID()) == null)
+			storage.store(product.getID(), new LinkedList<Offer>());
 	}
 
 
@@ -39,6 +42,7 @@ public class PersistentBid extends AbstractBid {
 		
 		offers.add(o);
 		
+		super.addOffer(o);
 	}
 
 	@Override
@@ -49,4 +53,55 @@ public class PersistentBid extends AbstractBid {
 		return offers.getLast().getPrice();
 	}
 
+
+	private Bid alertsRegistration(boolean state, User u, AlertType... alerts) {
+		
+		EnumMap<AlertType, Boolean> registeredAlerts = this.storage.get(EnumMap.class, super.getSeller());
+		
+		if(registeredAlerts == null) {
+			registeredAlerts = new EnumMap<>(AlertType.class);
+			this.storage.store(super.getSeller(), registeredAlerts);
+		}
+		
+		for(AlertType type : alerts)
+			registeredAlerts.put(type, state);
+		
+		return this;
+	}
+	
+	@Override
+	public final Bid registerAlertListener(User user, AlertType... alerts) {
+		return this.alertsRegistration(true, user, alerts);
+	}
+
+	@Override
+	public final Bid unregisterAlertListener(User user, AlertType... alerts) {
+		return this.alertsRegistration(false, user, alerts);
+	}
+
+
+	@Override
+	protected final void fireReservePriceReached() {
+		
+		
+	}
+
+
+	@Override
+	protected final void fireBidCancelled() {
+		EnumMap<AlertType, Boolean> registeredAlerts = this.storage.get(EnumMap.class, super.getSeller());
+		
+		if(registeredAlerts == null) return;
+		
+		for()
+		
+	}
+
+
+	@Override
+	protected final void fireHigherOffer() {
+		
+	}
+	
+	
 }
