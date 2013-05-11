@@ -1,6 +1,5 @@
 package fr.esiea.ooa.ebaylike.default_impl;
 
-import fr.esiea.ooa.ebaylike.api.AbstractOffer;
 import fr.esiea.ooa.ebaylike.api.Buyer;
 import fr.esiea.ooa.ebaylike.api.Offer;
 
@@ -9,19 +8,23 @@ import fr.esiea.ooa.ebaylike.api.Offer;
  * @author Nicolas Remi Romain
  *
  */
-public class DefaultOffer extends AbstractOffer {
+public class DefaultOffer implements Offer {
 
+	private final Buyer emitter;
+	
+	private final float price;
+	
+	DefaultOffer(Buyer b, float price) {
+		this.emitter = b;
+		this.price = price;
+	}
 	
 	public float getPrice() {
 		return this.price;
-
 	}
 
 	@Override
 	public Buyer getEmitter() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.emitter;
 	}
-
-
 }

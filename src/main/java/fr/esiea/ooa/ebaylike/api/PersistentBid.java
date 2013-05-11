@@ -3,105 +3,92 @@
  */
 package fr.esiea.ooa.ebaylike.api;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.EnumMap;
-import java.util.LinkedList;
+import java.util.List;
 
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
-import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 /**
  * @author Nicolas Remi Romain
  *
  */
-public abstract class PersistentBid extends AbstractBid {
+public class PersistentBid extends AbstractBid {
 
-	private final PersistenceAgent storage;
+	private final OfferManager offerManager;
+
+	private final AlertManager alertManager;
+	
 	
 	/**
 	 * @param seller
 	 * @param product
 	 * @param limit
 	 */
-	public PersistentBid(PersistenceAgent storage, Seller seller, Product product, Date limit) {
+	public PersistentBid(OfferManager offerMng, PersistentAlertManager alertMng, Seller seller, Product product, Date limit) {
 		super(seller, product, limit);
 	
-		this.storage = storage;
-		
-		if(storage.get(LinkedList.class, product.getID()) == null)
-			storage.store(product.getID(), new LinkedList<Offer>());
+		this.offerManager = offerMng;
+		this.alertManager = alertMng;
 	}
 
 
 	@Override
 	public void addOffer(Offer o) {
 		
-		LinkedList<Offer> offers = this.storage.get(LinkedList.class, this.getProduct().getID());
-		
-		offers.add(o);
+		this.offerManager.storeOffer(o);
 		
 		super.addOffer(o);
 	}
 
 	@Override
 	public final float getLastOfferPrice() {
-		
-		LinkedList<Offer> offers = this.storage.get(LinkedList.class, this.getProduct().getID());
-		
-		return offers.getLast().getPrice();
+
+		return this.offerManager.getLastOffer().getPrice();
 	}
 
-
-	private Bid alertsRegistration(boolean state, User u, AlertType... alerts) {
-		
-		EnumMap<AlertType, Boolean> registeredAlerts = this.storage.get(EnumMap.class, super.getSeller());
-		
-		if(registeredAlerts == null) {
-			registeredAlerts = new EnumMap<>(AlertType.class);
-			this.storage.store(super.getSeller(), registeredAlerts);
-		}
-		
-		for(AlertType type : alerts)
-			registeredAlerts.put(type, state);
-		
-		return this;
-	}
 	
 	@Override
 	public final Bid registerAlertListener(User user, AlertType... alerts) {
-		return this.alertsRegistration(true, user, alerts);
+		
+		this.alertManager.manageUserAlerts(user, AlertManager.REGISTER, alerts);
+		
+		return this;
 	}
 
 	@Override
 	public final Bid unregisterAlertListener(User user, AlertType... alerts) {
-		return this.alertsRegistration(false, user, alerts);
+		
+		this.alertManager.manageUserAlerts(user, AlertManager.UNREGISTER, alerts);
+		
+		return this;
 	}
 
 
 	@Override
 	protected final void fireReservePriceReached() {
 		
-		
+		for(User u : this.alertManager.getRegisteredUsers(AlertType.RESERVE_PRICE_REACHED)) 
+			u.reservePriceReached(this);
 	}
 
 
 	@Override
 	protected final void fireBidCancelled() {
-		EnumMap<AlertType, Boolean> registeredAlerts = this.storage.get(EnumMap.class, super.getSeller());
 		
-		if(registeredAlerts == null) return;
-		
-		for()
-		
+		for(User u : this.alertManager.getRegisteredUsers(AlertType.BID_CANCELLED)) 
+			u.bidCancelled(this);
 	}
 
 
 	@Override
-	protected final void fireHigherOffer() {
+	protected final void fireHigherOfferAdded(Offer o) {
+		
+		List<User> registeredUsers = this.alertManager.getRegisteredUsers(AlertType.HIGHER_OFFER_DONE);
+		
+		registeredUsers.remove(o.getEmitter());
+		
+		for(User u : registeredUsers) 
+			u.higherOfferAdded(this, o.getPrice());
 		
 	}
-	
-	
 }

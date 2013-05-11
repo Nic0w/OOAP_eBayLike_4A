@@ -15,11 +15,11 @@ import fr.esiea.ooa.ebaylike.api.factory.ProductFactory;
 import fr.esiea.ooa.ebaylike.api.factory.UserFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultBidFactory;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultOfferFactory;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultProductFactory;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultUserFactory;
 import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
-import fr.esiea.ooa.ebaylike.default_impl.factory.DefaultBidFactory;
-import fr.esiea.ooa.ebaylike.default_impl.factory.DefaultOfferFactory;
-import fr.esiea.ooa.ebaylike.default_impl.factory.DefaultProductFactory;
-import fr.esiea.ooa.ebaylike.default_impl.factory.DefaultUserFactory;
 
 /**
  * 

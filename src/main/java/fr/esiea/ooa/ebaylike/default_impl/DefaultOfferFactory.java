@@ -1,4 +1,4 @@
-package fr.esiea.ooa.ebaylike.default_impl.factory;
+package fr.esiea.ooa.ebaylike.default_impl;
 
 import fr.esiea.ooa.ebaylike.api.Buyer;
 import fr.esiea.ooa.ebaylike.api.Offer;

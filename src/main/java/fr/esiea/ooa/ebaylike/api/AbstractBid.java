@@ -145,11 +145,14 @@ public abstract class AbstractBid implements Bid {
 	@Override
 	public void addOffer(Offer o) {
 		this.seller.receivedNewOffer(this, o);
+		
+		fireHigherOfferAdded(o);
+		
 	}
 	
 	protected abstract void fireReservePriceReached();
 	
 	protected abstract void fireBidCancelled();
 	
-	protected abstract void fireHigherOffer();
+	protected abstract void fireHigherOfferAdded(Offer o);
 }
