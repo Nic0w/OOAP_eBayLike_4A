@@ -22,6 +22,7 @@ public abstract class AbstractBid implements Bid {
 	private BidState bidState;
 	private float minPrice;
 	private float reservePrice;
+
 	
 	protected AbstractBid(Seller seller, Product product, Date limit) {
 		
