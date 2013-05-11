@@ -53,6 +53,13 @@ public interface Bid {
 		public Bid registerAlertListener(User user, AlertType... alerts);
 		
 		/**
+		 * @param user
+		 * @param alerts
+		 * @return
+		 */
+		public Bid unregisterAlertListener(User user, AlertType... alerts);
+		
+		/**
 		 * add an offer to an Bid
 		 * 
 		 * @param o the offer to add

@@ -9,7 +9,6 @@ package fr.esiea.ooa.ebaylike.api.event;
  */
 public enum AlertType {
 
-	NEW_OFFER_DONE,
 	RESERVE_PRICE_REACHED,
 	BID_CANCELLED,
 	HIGHER_OFFER_DONE

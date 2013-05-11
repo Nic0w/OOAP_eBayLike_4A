@@ -54,7 +54,7 @@ public class MainTest {
 			System.out.println(b);
 			
 			
-			u.bid(b, 0);
+			u.bid(b, 12);
 			
 		} catch (UserAlreadyExistsException | StorageException e) {
 			// TODO Auto-generated catch block
