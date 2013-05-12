@@ -5,6 +5,7 @@ import java.util.Date;
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
+import fr.esiea.ooa.ebaylike.default_impl.p2.Index;
 
 /**
  * @author Nicolas Remi Romain
@@ -12,7 +13,9 @@ import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
  */
 public abstract class AbstractUser implements User {
 
-	private final String login;
+	
+	@Index private final String login;
+	
 	private final String firstName;
 	private final String lastName;
 	

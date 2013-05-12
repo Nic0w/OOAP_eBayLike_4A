@@ -144,6 +144,10 @@ public abstract class AbstractBid implements Bid {
 	
 	@Override
 	public void addOffer(Offer o) {
+		
+		if(o.getEmitter().equals(this.seller))
+			throw new IllegalActionException("The seller can't make an offer on its own bid.");
+		
 		this.seller.receivedNewOffer(this, o);
 		
 		fireHigherOfferAdded(o);

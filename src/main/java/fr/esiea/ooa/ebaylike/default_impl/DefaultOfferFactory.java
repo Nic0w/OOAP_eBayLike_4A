@@ -7,9 +7,9 @@ import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 public class DefaultOfferFactory implements OfferFactory {
 
 	@Override
-	public Offer createNewOffer(Buyer b, float price) {
-		// TODO Auto-generated method stub
-		return null;
+	public Offer createNewOffer(Buyer buyer, float price) {
+		
+		return new DefaultOffer(buyer, price);
 	}
 
 }

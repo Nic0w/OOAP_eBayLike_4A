@@ -9,6 +9,7 @@ import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.factory.UserFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent2;
 
 /**
  * @author nic0w
@@ -16,7 +17,7 @@ import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
  */
 public class DefaultUserFactory implements UserFactory {
 
-	private final PersistenceAgent bidStorage;
+	private final PersistenceAgent2 bidStorage;
 	
 	private final BidFactory   bidFactory;
 	private final OfferFactory offerFactory;
@@ -24,7 +25,7 @@ public class DefaultUserFactory implements UserFactory {
 	/**
 	 * 
 	 */
-	public DefaultUserFactory(PersistenceAgent storage, BidFactory bidFactory, OfferFactory offerFactory) {
+	public DefaultUserFactory(PersistenceAgent2 storage, BidFactory bidFactory, OfferFactory offerFactory) {
 		this.bidStorage   = storage;
 		this.bidFactory   = bidFactory;
 		this.offerFactory = offerFactory;

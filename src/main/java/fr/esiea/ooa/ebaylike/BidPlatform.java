@@ -5,21 +5,33 @@ package fr.esiea.ooa.ebaylike;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fr.esiea.ooa.ebaylike.api.Bid;
+import fr.esiea.ooa.ebaylike.api.Offer;
+import fr.esiea.ooa.ebaylike.api.PersistentBid;
 import fr.esiea.ooa.ebaylike.api.Product;
 import fr.esiea.ooa.ebaylike.api.User;
 import fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException;
+import fr.esiea.ooa.ebaylike.api.factory.AlertFactory;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.factory.ProductFactory;
 import fr.esiea.ooa.ebaylike.api.factory.UserFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent2;
 import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultAlertFactory;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultBidFactory;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultOffer;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultOfferFactory;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultProduct;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultProductFactory;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultUser;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultUserFactory;
 import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
+import fr.esiea.ooa.ebaylike.default_impl.p2.CollectionsPA2;
 
 /**
  * 
@@ -28,14 +40,16 @@ import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
  */
 public class BidPlatform {
 
+	private static final Logger bpLogger = LoggerFactory.getLogger(BidPlatform.class);
+	
 	private static BidPlatform defaultImpl = null;
 	
-	private final PersistenceAgent storage;
+	private final PersistenceAgent2 storage;
 	
 	private final UserFactory userFactory;
 	private final ProductFactory productFactory;
 	
-	public BidPlatform(PersistenceAgent agent, UserFactory userFactory, ProductFactory productFactory) {
+	public BidPlatform(PersistenceAgent2 agent, UserFactory userFactory, ProductFactory productFactory) {
 		
 		this.storage = agent;
 		this.userFactory = userFactory;
@@ -52,21 +66,33 @@ public class BidPlatform {
 		
 		if(newInstance || defaultImpl == null) {
 			
-			PersistenceAgent storage = new JavaCollectionsPersistenceAgent();
+			bpLogger.info("Creating new BidPlatform.");
+			
+			CollectionsPA2 storage = new CollectionsPA2();
+			
+			storage.bind(DefaultUser.class,    User.class);
+			storage.bind(DefaultOffer.class,   Offer.class);
+			storage.bind(DefaultProduct.class, Product.class);
+			storage.bind(PersistentBid.class,  Bid.class);
 			
 			ProductFactory productFactory = new DefaultProductFactory();
-			BidFactory	bidFactory        = new DefaultBidFactory(storage);
+			AlertFactory alertFactory     = new DefaultAlertFactory();
+			BidFactory	bidFactory        = new DefaultBidFactory(storage, alertFactory);
 			OfferFactory offerFactory     = new DefaultOfferFactory();
 			
 			UserFactory userFactory  = new DefaultUserFactory(storage, bidFactory, offerFactory);
 		
 			instance =  new BidPlatform(storage, userFactory, productFactory);
 			
-			if(!newInstance) 
+			if(!newInstance) {
+				bpLogger.info("This instance will be the singleton.");
 				defaultImpl = instance;
+			}
 		}
-		else
+		else {
+			bpLogger.trace("Returned th singleton");
 			instance = defaultImpl;
+		}
 
 		return instance;
 	}
@@ -83,14 +109,20 @@ public class BidPlatform {
 	 */
 	public User newUser(String login, String name, String forename) throws UserAlreadyExistsException, StorageException {
 		
-		User user = null;
+		bpLogger.info("Trying to create a new User.");
 		
-		if((user = storage.get(User.class, login)) != null)
+		User user = this.storage.get(User.class).
+						where("login").isEqualTo(login).
+						firstRow();
+		
+		if(user != null)
 			throw new UserAlreadyExistsException(user);
-			
+		
 		user = this.userFactory.createNewUser(login, name, forename);
 		
-		storage.store(user.getLogin(), user);
+		this.storage.store(user);
+		
+		bpLogger.info("New user created and stored.");
 		
 		return user;
 	}
@@ -107,5 +139,9 @@ public class BidPlatform {
 	 */
 	public List<Bid> getPublishedBids() {
 		return null;
+	}
+	
+	public PersistenceAgent2 getPersistenceAgent() {
+		return this.storage;
 	}
 }

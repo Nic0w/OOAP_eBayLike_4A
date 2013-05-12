@@ -5,6 +5,7 @@ package fr.esiea.ooa.ebaylike.api;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
 
@@ -24,7 +25,7 @@ public class PersistentBid extends AbstractBid {
 	 * @param product
 	 * @param limit
 	 */
-	public PersistentBid(OfferManager offerMng, PersistentAlertManager alertMng, Seller seller, Product product, Date limit) {
+	public PersistentBid(PersistentOfferManager offerMng, PersistentAlertManager alertMng, Seller seller, Product product, Date limit) {
 		super(seller, product, limit);
 	
 		this.offerManager = offerMng;
@@ -50,7 +51,7 @@ public class PersistentBid extends AbstractBid {
 	@Override
 	public final Bid registerAlertListener(User user, AlertType... alerts) {
 		
-		this.alertManager.manageUserAlerts(user, AlertManager.REGISTER, alerts);
+		this.alertManager.manageUserAlerts(this, user, AlertManager.REGISTER, alerts);
 		
 		return this;
 	}
@@ -58,7 +59,7 @@ public class PersistentBid extends AbstractBid {
 	@Override
 	public final Bid unregisterAlertListener(User user, AlertType... alerts) {
 		
-		this.alertManager.manageUserAlerts(user, AlertManager.UNREGISTER, alerts);
+		this.alertManager.manageUserAlerts(this, user, AlertManager.UNREGISTER, alerts);
 		
 		return this;
 	}
@@ -83,7 +84,7 @@ public class PersistentBid extends AbstractBid {
 	@Override
 	protected final void fireHigherOfferAdded(Offer o) {
 		
-		List<User> registeredUsers = this.alertManager.getRegisteredUsers(AlertType.HIGHER_OFFER_DONE);
+		Set<User> registeredUsers = this.alertManager.getRegisteredUsers(AlertType.HIGHER_OFFER_DONE);
 		
 		registeredUsers.remove(o.getEmitter());
 		

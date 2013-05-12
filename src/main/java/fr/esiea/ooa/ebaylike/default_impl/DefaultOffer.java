@@ -11,7 +11,6 @@ import fr.esiea.ooa.ebaylike.api.Offer;
 public class DefaultOffer implements Offer {
 
 	private final Buyer emitter;
-	
 	private final float price;
 	
 	DefaultOffer(Buyer b, float price) {
