@@ -13,7 +13,7 @@ public interface OfferManager {
 
 	public void storeOffer(Offer o);
 	
-	public Offer getLastOffer();
+	public Offer getLastOffer(Bid b);
 	
 	public Offer getLastOffer(Buyer b);
 	

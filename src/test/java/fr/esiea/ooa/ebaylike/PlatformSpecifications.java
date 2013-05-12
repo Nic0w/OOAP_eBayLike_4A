@@ -9,6 +9,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import fr.esiea.ooa.ebaylike.api.User;
+import fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException;
+import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
+
 /**
  * @author Nic0w
  *
@@ -16,22 +20,19 @@ import org.junit.Test;
 public class PlatformSpecifications {
 
 	/**
-	 * @throws java.lang.Exception
+	 * The platform should be able to create new Users
+	 * 
+	 * @throws UserAlreadyExistsException
+	 * @throws StorageException
 	 */
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
-	public final void test() {
-		fail("Not yet implemented"); // TODO
+	public final void testPlatformCanCreateUserInstances() throws UserAlreadyExistsException, StorageException {
+		
+		BidPlatform platform = BidPlatform.getDefaultInstance(true);
+		
+		User user = platform.newUser("aLogin", "aName", "aLastname");
+		
+		assertFalse(user == null);
 	}
 
 }

@@ -32,7 +32,7 @@ public class DefaultTable<T> implements Table<T> {
 	
 	@Override
 	public T lastRow() {
-		return this.rows.getLast();
+		return this.rows.peekLast();
 	}
 
 	@Override

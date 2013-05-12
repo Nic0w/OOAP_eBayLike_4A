@@ -5,8 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ BidSpecifications.class, BuyerSpecifications.class,
-		PlatformSpecifications.class, SellerSpecifications.class,
+@SuiteClasses({ BidSpecifications.class, 
+		PlatformSpecifications.class,
 		UserSpecifications.class })
 public class AllTests {
 

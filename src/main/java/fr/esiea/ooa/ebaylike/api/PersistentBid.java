@@ -36,15 +36,17 @@ public class PersistentBid extends AbstractBid {
 	@Override
 	public void addOffer(Offer o) {
 		
-		this.offerManager.storeOffer(o);
-		
 		super.addOffer(o);
+		
+		this.offerManager.storeOffer(o);
 	}
 
 	@Override
 	public final float getLastOfferPrice() {
 
-		return this.offerManager.getLastOffer().getPrice();
+		Offer lastOffer = this.offerManager.getLastOffer(this);
+	
+		return lastOffer == null ?  -1 : lastOffer.getPrice();
 	}
 
 	

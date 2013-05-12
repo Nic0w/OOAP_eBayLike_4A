@@ -1,8 +1,12 @@
 package fr.esiea.ooa.ebaylike.api;
 
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
 import fr.esiea.ooa.ebaylike.api.exception.BadSellerException;
@@ -15,11 +19,13 @@ import fr.esiea.ooa.ebaylike.api.exception.IllegalActionException;
  */
 public abstract class AbstractBid implements Bid {
 
+	private static final Logger abLogger = LoggerFactory.getLogger(AbstractBid.class);
+	
 	private final Date limitDate;
 	private final Seller seller;
 	private final Product product;
 	
-	private BidState bidState;
+	protected BidState bidState;
 	private float minPrice;
 	private float reservePrice;
 
@@ -100,6 +106,9 @@ public abstract class AbstractBid implements Bid {
 	@Override
 	public final Bid cancelIt(Seller seller) throws BadSellerException {
 		
+		if(this.hasReservePriceBeenReached())
+			throw new IllegalActionException("Cannot cancel a bid when the reserve price has been reached !");
+		
 		if(sellerIsOK(seller)) this.bidState = BidState.CANCELLED;
 		
 		this.fireBidCancelled();
@@ -109,6 +118,15 @@ public abstract class AbstractBid implements Bid {
 
 	@Override
 	public final boolean isFinished() {
+		
+		Calendar currentTime = Calendar.getInstance();
+		
+		Calendar limiteDate = Calendar.getInstance();
+		limiteDate.setTime(this.limitDate);
+		
+		if(currentTime.compareTo(limiteDate) >= 0) 
+			this.bidState = BidState.FINISHED;
+		
 		return this.bidState == BidState.FINISHED;
 	}
 
@@ -145,8 +163,22 @@ public abstract class AbstractBid implements Bid {
 	@Override
 	public void addOffer(Offer o) {
 		
+		abLogger.debug("This offer price is : {}.", o.getPrice() );
+		
 		if(o.getEmitter().equals(this.seller))
 			throw new IllegalActionException("The seller can't make an offer on its own bid.");
+		
+		if(!this.isPublished() || this.isCancelled() || this.isFinished())
+			throw new IllegalActionException("You cannot make an offer on this Bid !");
+		
+		if(o.getPrice() < this.minPrice)
+			throw new IllegalActionException("You must make an offer higher than the minimum price.");
+		
+		
+		abLogger.debug("Last offer price is {}.", this.getLastOfferPrice());
+		
+		if(o.getPrice() <= this.getLastOfferPrice())
+			throw new IllegalActionException("You must make an offer higher than the last offer.");
 		
 		this.seller.receivedNewOffer(this, o);
 		

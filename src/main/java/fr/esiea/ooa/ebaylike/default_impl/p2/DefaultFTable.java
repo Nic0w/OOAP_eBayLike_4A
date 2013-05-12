@@ -66,6 +66,8 @@ public class DefaultFTable<T> implements FilteredTable<T> {
 				return m;
 			}
 		
+		dftLogger.warn("No Method with correct return type was found in class {}.", source.getSimpleName());
+		
 		return null;
 	}
 	
@@ -80,7 +82,9 @@ public class DefaultFTable<T> implements FilteredTable<T> {
 				
 				return m;
 			}
-			
+		
+		dftLogger.warn("No Method named {} was found in class {}.", realFilter, source.getSimpleName());
+		
 		return null;
 	}
 	
@@ -116,9 +120,21 @@ public class DefaultFTable<T> implements FilteredTable<T> {
 	
 	protected FilteredTable<T> byField(Class<?> fieldType) {
 		
-		this.filterField = getFieldFromType(this.rowType, fieldType);
+		this.filterField = null;
 		
-		if(this.filterField == null) {
+		Class<?> sourceClass = this.rowType;
+		
+		//We search firstly in the class, then in every superclass !
+		while(!sourceClass.equals(Object.class) && this.filterField == null) { 
+			
+			this.filterField = getFieldFromType(sourceClass, fieldType);
+
+			sourceClass = sourceClass.getSuperclass();
+			if(sourceClass==null) break;
+		}
+		
+		
+		if(this.filterField == null) { //If we really cannot find a field, we're going to search for a method.
 			this.useMethod = true;
 			this.filterMethod = getMethodByReturnType(this.rowType, fieldType);
 		}
@@ -128,7 +144,18 @@ public class DefaultFTable<T> implements FilteredTable<T> {
 	
 	protected FilteredTable<T> byName(String fieldName) {
 		
-		this.filterField = getFieldFromName(this.rowType, fieldName);
+		this.filterField = null;
+		
+		Class<?> sourceClass = this.rowType;
+		
+		while(!sourceClass.equals(Object.class) && this.filterField == null) {
+			
+			this.filterField = getFieldFromName(sourceClass, fieldName);
+
+			sourceClass = sourceClass.getSuperclass();
+			
+			if(sourceClass==null) break;
+		}
 		
 		if(this.filterField == null) {
 			this.useMethod = true;

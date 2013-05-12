@@ -13,4 +13,5 @@ public interface Offer {
 		
 	public Buyer getEmitter();
 	
+	public Bid getBid();
 }

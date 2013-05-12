@@ -17,12 +17,9 @@ public class PersistentOfferManager implements OfferManager {
 	}
 
 	@Override
-	public Offer getLastOffer() {
+	public Offer getLastOffer(Bid b) {
 		
-		//storage.get(Offer.class).lastRow();
-		
-		
-		return null;
+		return this.storage.get(Offer.class).where(Bid.class).isEqualTo(b).lastRow();
 	}
 
 	@Override

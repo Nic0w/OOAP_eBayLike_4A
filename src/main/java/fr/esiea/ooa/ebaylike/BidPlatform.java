@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.esiea.ooa.ebaylike.api.Bid;
+import fr.esiea.ooa.ebaylike.api.BidState;
 import fr.esiea.ooa.ebaylike.api.Offer;
 import fr.esiea.ooa.ebaylike.api.PersistentBid;
 import fr.esiea.ooa.ebaylike.api.Product;
@@ -30,7 +31,6 @@ import fr.esiea.ooa.ebaylike.default_impl.DefaultProduct;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultProductFactory;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultUser;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultUserFactory;
-import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
 import fr.esiea.ooa.ebaylike.default_impl.p2.CollectionsDatabase;
 
 /**
@@ -111,6 +111,10 @@ public class BidPlatform {
 		
 		bpLogger.info("Trying to create a new User.");
 		
+		if(login == null) throw new IllegalArgumentException("Login cannot be null !");
+		
+		if(login.length() == 0) throw new IllegalArgumentException("Login cannot be void !");
+		
 		User user = this.storage.get(User.class).
 						where("login").isEqualTo(login).
 						firstRow();
@@ -138,10 +142,12 @@ public class BidPlatform {
 	 * @return List<Bid>
 	 */
 	public List<Bid> getPublishedBids() {
-		return null;
+		
+		return this.storage.get(Bid.class).
+							where(BidState.class).isEqualTo(BidState.PUBLISHED).
+					asList();
+
 	}
 	
-	public PersistenceAgent getPersistenceAgent() {
-		return this.storage;
-	}
+
 }

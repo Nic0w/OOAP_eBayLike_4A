@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,13 +15,14 @@ import org.junit.Test;
 
 import fr.esiea.ooa.ebaylike.api.Bid;
 import fr.esiea.ooa.ebaylike.api.Buyer;
+import fr.esiea.ooa.ebaylike.api.DateHelper;
 import fr.esiea.ooa.ebaylike.api.Offer;
 import fr.esiea.ooa.ebaylike.api.Product;
 import fr.esiea.ooa.ebaylike.api.Seller;
 import fr.esiea.ooa.ebaylike.api.User;
+import fr.esiea.ooa.ebaylike.api.exception.IllegalActionException;
 import fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException;
 import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
-import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
 
 /**
  * @author Nic0w
@@ -51,9 +53,7 @@ public class UserSpecifications {
 	@Test(expected=IllegalArgumentException.class)
 	public final void testUserLoginCannotBeNull() throws UserAlreadyExistsException, StorageException {
 
-		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
-
-		BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
+		BidPlatform bidPlatform = BidPlatform.getDefaultInstance(true);
 
 		User nullLoginUser = bidPlatform.newUser(null, "Benjamin", "Franklin");
 	}
@@ -67,9 +67,7 @@ public class UserSpecifications {
 	@Test(expected=IllegalArgumentException.class)
 	public final void testUserLoginCannotBeVoid() throws UserAlreadyExistsException, StorageException {
 
-		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
-
-		BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
+		BidPlatform bidPlatform = BidPlatform.getDefaultInstance(true);
 
 		User voidLoginUser = bidPlatform.newUser("", "Benjamin", "Franklin");
 	}
@@ -83,9 +81,7 @@ public class UserSpecifications {
 	@Test
 	public final void testUserLoginIsUsable() throws UserAlreadyExistsException, StorageException {
 
-		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
-
-		BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
+		BidPlatform bidPlatform = BidPlatform.getDefaultInstance(true);
 
 		String testLogin = "testLogin";
 		User testLoginUser = bidPlatform.newUser(testLogin, "Benjamin", "Franklin");
@@ -102,9 +98,8 @@ public class UserSpecifications {
 	@Test(expected=UserAlreadyExistsException.class)
 	public final void testUserLoginIsUnique() throws UserAlreadyExistsException, StorageException {
 
-		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
+		BidPlatform bidPlatform = BidPlatform.getDefaultInstance(true);
 
-		BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
 		String uniqueLogin = "aUniqueLogin";
 
 		User firstUser  = bidPlatform.newUser(uniqueLogin, "Benjamin", "Franklin");
@@ -123,9 +118,7 @@ public class UserSpecifications {
 		String testName 	= "aRandomName";
 		String testForename = "aRandomForename"; 
 
-		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
-
-		BidPlatform bidPlatform = new BidPlatformBuilder(storageAgent).build();
+		BidPlatform bidPlatform = BidPlatform.getDefaultInstance(true);
 
 		User testUser = bidPlatform.newUser("aRandomLogin", testName, testForename);
 
@@ -147,22 +140,20 @@ public class UserSpecifications {
 	 * @throws StorageException 
 	 * @throws UserAlreadyExistsException 
 	 */
-	@Test(expected=IllegalArgumentException.class)
+	@Test
 	public final void testUserCreateAndPublishBid() throws UserAlreadyExistsException, StorageException{
 
-		Product p = null;
-		Date limit = null;
+		Date limit = DateHelper.getTomorrowSameHour();
 		
-		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
+		BidPlatform bidPlatform = BidPlatform.getDefaultInstance(true);
+
+		Seller user  = bidPlatform.newUser("aRandomLogin", "Benjamin", "Franklin");
+
+		Product p = bidPlatform.newProduct("test");
 		
-		BidPlatform platform = BidPlatform.getDefaultInstance(true);
-
-		Seller user  = platform.newUser("aRandomLogin", "Benjamin", "Franklin");
-
 		Bid bid = user.createBid(p, limit);
 
 		user.publishBid(bid);
-
 	}
 
 	/**
@@ -170,52 +161,45 @@ public class UserSpecifications {
 	 * @throws StorageException 
 	 * @throws UserAlreadyExistsException 
 	 */
-	@Test(expected=IllegalArgumentException.class)
+	@Test
 	public final void testUserDoOfferBidAlreadyPublished() throws UserAlreadyExistsException, StorageException{
 
-		Product p = null ;
-		Date limit = null;
+		Date limit = DateHelper.getTomorrowSameHour();
 		float price = 0;
 
-		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
+		BidPlatform bidPlatform = BidPlatform.getDefaultInstance(true);
 
-		BidPlatform platform = BidPlatform.getDefaultInstance(true);
+		Product p =  bidPlatform.newProduct("test");
 
-		User user1;
-
-		user1 = platform.newUser("aRandomLogin", "Benjamin", "Franklin");
-		Buyer user2  = platform.newUser("aRandomLogin2", "Benjamin2", "Franklin2");
+		User user1  = bidPlatform.newUser("aRandomLogin", "Benjamin", "Franklin");
+		Buyer user2 = bidPlatform.newUser("aRandomLogin2", "Benjamin2", "Franklin2");
 
 
 		Bid bid = user1.createBid(p, limit);
+		
 		user1.publishBid(bid);
 
 		user2.bid(bid, price);
-
 	}
 
 	/**
-	 *  Test if it is possible to do an Offer for a Bid unpublished
+	 *  Test if it is possible to do an Offer for a unpublished Bid
 	 * @throws StorageException 
 	 * @throws UserAlreadyExistsException 
 	 */
-	@Test(expected=IllegalArgumentException.class)
-	public final void testOfferOnUnpublishedBid() throws UserAlreadyExistsException, StorageException{
+	@Test(expected=IllegalActionException.class)
+	public final void testOfferOnUnpublishedBid() throws UserAlreadyExistsException, StorageException {
 		
-		Product p = null ;
-		Date limit = null;
+		Date limit = DateHelper.getTomorrowSameHour();
 		float price = 0;
 
-		JavaCollectionsPersistenceAgent storageAgent = new JavaCollectionsPersistenceAgent();
+		BidPlatform bidPlatform = BidPlatform.getDefaultInstance(true);
 
-		BidPlatform platform = BidPlatform.getDefaultInstance(true);
+		User user1  = bidPlatform.newUser("aRandomLogin", "Benjamin", "Franklin");
+		Buyer user2  = bidPlatform.newUser("aRandomLogin2", "Benjamin2", "Franklin2");
 
-		User user1;
-
-		user1 = platform.newUser("aRandomLogin", "Benjamin", "Franklin");
-		Buyer user2  = platform.newUser("aRandomLogin2", "Benjamin2", "Franklin2");
-
-
+		Product p =  bidPlatform.newProduct("test");
+		
 		Bid bid = user1.createBid(p, limit);
 
 		user2.bid(bid, price);
@@ -224,11 +208,37 @@ public class UserSpecifications {
 
 	/**
 	 * A published Bid is visible to the other users
+	 * 
 	 * @throws StorageException 
 	 * @throws UserAlreadyExistsException 
 	 */
-	@Test(expected=IllegalArgumentException.class)
+	@Test
 	public final void testVisibleBidPublished() throws UserAlreadyExistsException, StorageException{
-	
+		
+		BidPlatform bidPlatform = BidPlatform.getDefaultInstance(true);
+		
+		
+		Seller seller1  = bidPlatform.newUser("aRandomLogin", "Benjamin", "Franklin");
+		Seller seller2  = bidPlatform.newUser("aRandomLogin2", "George", "Washington");
+		
+		
+		Product car   = bidPlatform.newProduct("a car");
+		Product bike  = bidPlatform.newProduct("a bike");
+		Product plane = bidPlatform.newProduct("a plane");
+		Product boat  = bidPlatform.newProduct("a boat");
+		
+		Date limit = DateHelper.getTomorrowSameHour();
+		
+		seller1.createBid(car,   limit).publishIt(seller1);
+		seller1.createBid(bike,  limit).publishIt(seller1);
+		seller2.createBid(boat,  limit).publishIt(seller2);
+		seller2.createBid(plane, limit).publishIt(seller2);
+		
+		
+		List<Bid> publishedBids = bidPlatform.getPublishedBids();
+		
+		assertThat(publishedBids.size(), is(4));
+		
+		
 	}
 }

@@ -34,13 +34,16 @@ public abstract class AbstractUser implements User {
 	
 	@Override
 	public Bid createBid(Product p, Date limit, float minPrice) {
+		
+		if(limit == null) throw new NullPointerException("Limit Date cannot be null !");
+		
 		return this.bidFactory.createBid(this, p, limit, minPrice);
 	}
 	
 	@Override
 	public final void bid(Bid bid, float price) {
 		
-		Offer o = this.offerFactory.createNewOffer(this, price);
+		Offer o = this.offerFactory.createNewOffer(bid, this, price);
 		
 		bid.addOffer(o);
 	}
