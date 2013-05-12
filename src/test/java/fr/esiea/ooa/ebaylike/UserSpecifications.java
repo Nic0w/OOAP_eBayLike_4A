@@ -3,8 +3,9 @@
  */
 package fr.esiea.ooa.ebaylike;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,6 @@ import org.junit.Test;
 import fr.esiea.ooa.ebaylike.api.Bid;
 import fr.esiea.ooa.ebaylike.api.Buyer;
 import fr.esiea.ooa.ebaylike.api.DateHelper;
-import fr.esiea.ooa.ebaylike.api.Offer;
 import fr.esiea.ooa.ebaylike.api.Product;
 import fr.esiea.ooa.ebaylike.api.Seller;
 import fr.esiea.ooa.ebaylike.api.User;

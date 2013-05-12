@@ -1,10 +1,11 @@
-package fr.esiea.ooa.ebaylike.default_impl;
+package fr.esiea.ooa.ebaylike.default_impl.factory;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import fr.esiea.ooa.ebaylike.api.Product;
 import fr.esiea.ooa.ebaylike.api.factory.ProductFactory;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultProduct;
 
 public class DefaultProductFactory implements ProductFactory {
 	

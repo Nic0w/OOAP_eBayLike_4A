@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.esiea.ooa.ebaylike.default_impl;
+package fr.esiea.ooa.ebaylike.default_impl.factory;
 
 
 import fr.esiea.ooa.ebaylike.api.User;
@@ -9,7 +9,7 @@ import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.factory.UserFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultUser;
 
 /**
  * @author nic0w

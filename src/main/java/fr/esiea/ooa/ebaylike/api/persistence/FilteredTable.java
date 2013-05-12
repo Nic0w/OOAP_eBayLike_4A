@@ -3,7 +3,6 @@
  */
 package fr.esiea.ooa.ebaylike.api.persistence;
 
-import java.util.List;
 
 /**
  * @author nic0w

@@ -22,9 +22,6 @@ public interface Buyer extends BuyerBidListener {
 	 */
 	public void bid(Bid bid, float price);	
 	
-
-	public void testReservPrice();	
-	
 	/**
 	 * 
 	 * a buyer can subscribe to the alerts he want with this method

@@ -15,7 +15,7 @@ public class DefaultOffer implements Offer {
 	private final Buyer emitter;
 	private final float price;
 	
-	DefaultOffer(Bid bid, Buyer buyer, float price) {
+	public DefaultOffer(Bid bid, Buyer buyer, float price) {
 		this.emitter = buyer;
 		this.price = price;
 		this.bid = bid;

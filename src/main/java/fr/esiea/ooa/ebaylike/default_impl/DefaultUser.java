@@ -13,7 +13,6 @@ import fr.esiea.ooa.ebaylike.api.User;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 /**
  * @author Nicolas Remi Romain
@@ -35,33 +34,23 @@ public class DefaultUser extends PersistentUser {
 	}
 
 	@Override
-	public void testReservPrice() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
 	public void receivedNewOffer(Bid bid, Offer newOffer) {
 		duLogger.info("Seller '{}' received a new offer on bid {} by '{}'.", this.getLogin(), bid, ((User)newOffer.getEmitter()).getLogin());
 	}
 
 	@Override
 	public void reservePriceReached(Bid b) {
-		// TODO Auto-generated method stub
-		
+		duLogger.info("Alert for Buyer '{}' : Reserve Price reached on bid {}.", this.getLogin(), b);
 	}
 
 	@Override
 	public void bidCancelled(Bid b) {
-		// TODO Auto-generated method stub
-		
+		duLogger.info("Alert for Buyer '{}' : bid {} was cancelled.", this.getLogin(), b);
 	}
 
 	@Override
 	public void higherOfferAdded(Bid b, float newOfferPrice) {
-		// TODO Auto-generated method stub
-		
+		duLogger.info("Alert for Buyer '{}' : An higher offer ({}) was added on bid {}.", this.getLogin(), newOfferPrice, b);
 	}
 
 }

@@ -1,16 +1,10 @@
 package fr.esiea.ooa.ebaylike.api;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
 import fr.esiea.ooa.ebaylike.api.factory.AlertFactory;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 public class PersistentAlertManager implements AlertManager {

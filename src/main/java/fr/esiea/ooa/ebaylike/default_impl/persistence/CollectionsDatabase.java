@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.esiea.ooa.ebaylike.default_impl.p2;
+package fr.esiea.ooa.ebaylike.default_impl.persistence;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,7 +10,6 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import fr.esiea.ooa.ebaylike.BidPlatform;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 import fr.esiea.ooa.ebaylike.api.persistence.Table;
 

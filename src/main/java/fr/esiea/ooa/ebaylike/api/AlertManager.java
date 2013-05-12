@@ -3,7 +3,6 @@
  */
 package fr.esiea.ooa.ebaylike.api;
 
-import java.util.List;
 import java.util.Set;
 
 import fr.esiea.ooa.ebaylike.api.event.AlertType;

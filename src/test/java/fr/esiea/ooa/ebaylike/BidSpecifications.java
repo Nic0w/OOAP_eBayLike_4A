@@ -3,27 +3,25 @@
  */
 package fr.esiea.ooa.ebaylike;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 
-import org.hamcrest.core.IsNot;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import fr.esiea.ooa.ebaylike.api.Bid;
 import fr.esiea.ooa.ebaylike.api.Buyer;
 import fr.esiea.ooa.ebaylike.api.DateHelper;
-import fr.esiea.ooa.ebaylike.api.Offer;
 import fr.esiea.ooa.ebaylike.api.Product;
 import fr.esiea.ooa.ebaylike.api.Seller;
 import fr.esiea.ooa.ebaylike.api.User;
+import fr.esiea.ooa.ebaylike.api.exception.BadSellerException;
 import fr.esiea.ooa.ebaylike.api.exception.IllegalActionException;
 import fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException;
 import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
-import fr.esiea.ooa.ebaylike.default_impl.DefaultOffer;
 
 /**
  * @author Nic0w
@@ -243,16 +241,30 @@ public class BidSpecifications {
 		Date limit = DateHelper.getTomorrowSameHour();
 		float price = 20;
 		
-		Bid bid = seller.createBid(p, limit).
+		seller.createBid(p, limit).
 							setReservePrice(seller, price);
 	}
 	
 	/**
 	 * Test if the Reserve price is visible only by the Seller
 	 */
-	@Test
+	@Test(expected=BadSellerException.class)
 	public final void testVisibleReservePrice() throws UserAlreadyExistsException, StorageException {
-		fail("Not implemented yet !");
+		
+		BidPlatform platform = BidPlatform.getDefaultInstance(true);
+
+		Seller seller = platform.newUser("aRandomLogin", "Benjamin", "Franklin");
+
+		Seller seller2 = platform.newUser("aRandomLogin2", "Benjamin2", "Franklin2");
+		
+		Product p = platform.newProduct("test");
+		Date limit = DateHelper.getTomorrowSameHour();
+		float price = 20;
+		
+		Bid bid = seller.createBid(p, limit).
+							setReservePrice(seller, price);
+		
+		bid.getReservePrice(seller2);
 	}
 	
 	
@@ -263,7 +275,6 @@ public class BidSpecifications {
 	public final void testReservePriceReached() throws UserAlreadyExistsException, StorageException{
 
 		Date limit = DateHelper.getTomorrowSameHour();
-		float price = 20;
 
 		BidPlatform platform = BidPlatform.getDefaultInstance(true);
 

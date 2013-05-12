@@ -1,7 +1,6 @@
 package fr.esiea.ooa.ebaylike.api;
 
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 public class PersistentOfferManager implements OfferManager {
 

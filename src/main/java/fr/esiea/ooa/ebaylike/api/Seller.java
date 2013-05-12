@@ -22,9 +22,6 @@ public interface Seller extends SellerBidListener {
 	public Bid createBid(Product p, Date limit);
 	
 	/**
-	 * 
-	 * 
-
 	 * call this method to create a Bid with a minimum Price and a Limit Date
 	 * 
 	 * @param p

@@ -3,8 +3,8 @@
  */
 package fr.esiea.ooa.ebaylike;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 import java.util.Date;
 
@@ -19,12 +19,11 @@ import fr.esiea.ooa.ebaylike.api.Offer;
 import fr.esiea.ooa.ebaylike.api.Product;
 import fr.esiea.ooa.ebaylike.api.Seller;
 import fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
-import fr.esiea.ooa.ebaylike.default_impl.DefaultAlertFactory;
-import fr.esiea.ooa.ebaylike.default_impl.DefaultBidFactory;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultOffer;
-import fr.esiea.ooa.ebaylike.default_impl.p2.CollectionsDatabase;
+import fr.esiea.ooa.ebaylike.default_impl.factory.DefaultAlertFactory;
+import fr.esiea.ooa.ebaylike.default_impl.factory.DefaultBidFactory;
+import fr.esiea.ooa.ebaylike.default_impl.persistence.CollectionsDatabase;
 
 /**
  * @author nic0w

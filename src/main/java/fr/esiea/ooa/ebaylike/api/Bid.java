@@ -4,7 +4,6 @@ import java.util.Date;
 
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
 import fr.esiea.ooa.ebaylike.api.exception.BadSellerException;
-import fr.esiea.ooa.ebaylike.api.exception.IllegalActionException;
 
 
 /**
@@ -34,16 +33,23 @@ public interface Bid {
 		 * @param s
 		 * @param price
 		 * @return
-		 * @throws IllegalActionException 
+		 * @throws BadSellerException 
 		 */
 		public Bid setMinimumPrice(Seller s, float price) throws BadSellerException;
 		
 		/**
 		 * @param price
 		 * @return
-		 * @throws IllegalActionException 
+		 * @throws BadSellerException 
 		 */
 		public Bid setReservePrice(Seller s, float price) throws BadSellerException;
+		
+		/**
+		 * @param s
+		 * @return
+		 * @throws BadSellerException 
+		 */
+		public float getReservePrice(Seller s) throws BadSellerException;
 		
 		/**
 		 * @param user

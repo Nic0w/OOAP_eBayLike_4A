@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.esiea.ooa.ebaylike.default_impl;
+package fr.esiea.ooa.ebaylike.default_impl.factory;
 
 import java.util.Date;
 

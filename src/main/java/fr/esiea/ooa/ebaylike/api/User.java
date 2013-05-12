@@ -1,6 +1,5 @@
 package fr.esiea.ooa.ebaylike.api;
 
-import fr.esiea.ooa.ebaylike.api.event.AlertType;
 
 
 

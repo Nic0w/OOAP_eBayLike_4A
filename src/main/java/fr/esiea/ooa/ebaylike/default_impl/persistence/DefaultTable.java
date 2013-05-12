@@ -1,4 +1,4 @@
-package fr.esiea.ooa.ebaylike.default_impl.p2;
+package fr.esiea.ooa.ebaylike.default_impl.persistence;
 
 import java.util.Collection;
 import java.util.Iterator;
