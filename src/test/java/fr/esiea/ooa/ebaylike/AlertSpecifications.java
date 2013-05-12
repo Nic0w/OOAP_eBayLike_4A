@@ -68,10 +68,6 @@ public class AlertSpecifications {
 		assertThat(fakeSeller.receivedBid, is(bid));
 		assertThat(fakeSeller.receivedOffer, is(lastOffer));
 	}
-	
-	/*@Test
-	public void test*/
-
 }
 
 
