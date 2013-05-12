@@ -20,7 +20,7 @@ import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.factory.ProductFactory;
 import fr.esiea.ooa.ebaylike.api.factory.UserFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent2;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultAlertFactory;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultBidFactory;
@@ -31,7 +31,7 @@ import fr.esiea.ooa.ebaylike.default_impl.DefaultProductFactory;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultUser;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultUserFactory;
 import fr.esiea.ooa.ebaylike.default_impl.JavaCollectionsPersistenceAgent;
-import fr.esiea.ooa.ebaylike.default_impl.p2.CollectionsPA2;
+import fr.esiea.ooa.ebaylike.default_impl.p2.CollectionsDatabase;
 
 /**
  * 
@@ -44,12 +44,12 @@ public class BidPlatform {
 	
 	private static BidPlatform defaultImpl = null;
 	
-	private final PersistenceAgent2 storage;
+	private final PersistenceAgent storage;
 	
 	private final UserFactory userFactory;
 	private final ProductFactory productFactory;
 	
-	public BidPlatform(PersistenceAgent2 agent, UserFactory userFactory, ProductFactory productFactory) {
+	public BidPlatform(PersistenceAgent agent, UserFactory userFactory, ProductFactory productFactory) {
 		
 		this.storage = agent;
 		this.userFactory = userFactory;
@@ -68,7 +68,7 @@ public class BidPlatform {
 			
 			bpLogger.info("Creating new BidPlatform.");
 			
-			CollectionsPA2 storage = new CollectionsPA2();
+			CollectionsDatabase storage = new CollectionsDatabase();
 			
 			storage.bind(DefaultUser.class,    User.class);
 			storage.bind(DefaultOffer.class,   Offer.class);
@@ -141,7 +141,7 @@ public class BidPlatform {
 		return null;
 	}
 	
-	public PersistenceAgent2 getPersistenceAgent() {
+	public PersistenceAgent getPersistenceAgent() {
 		return this.storage;
 	}
 }

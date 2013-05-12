@@ -1,13 +1,13 @@
 package fr.esiea.ooa.ebaylike.api;
 
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent2;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 public class PersistentOfferManager implements OfferManager {
 
-	private final PersistenceAgent2 storage;
+	private final PersistenceAgent storage;
 	
-	public PersistentOfferManager(PersistenceAgent2 storage2) {
+	public PersistentOfferManager(PersistenceAgent storage2) {
 		this.storage = storage2;
 	}
 

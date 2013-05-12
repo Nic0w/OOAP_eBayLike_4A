@@ -15,7 +15,7 @@ import fr.esiea.ooa.ebaylike.api.factory.UserFactory;
  * @author nic0w
  *
  */
-public interface PersistenceAgent2 {
+public interface PersistenceAgent {
 	
 	public <T> void store(T o);
 	

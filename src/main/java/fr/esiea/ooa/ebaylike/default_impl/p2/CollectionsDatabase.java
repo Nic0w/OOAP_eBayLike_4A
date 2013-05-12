@@ -11,16 +11,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.esiea.ooa.ebaylike.BidPlatform;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent2;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 import fr.esiea.ooa.ebaylike.api.persistence.Table;
 
 /**
  * @author nic0w
  *
  */
-public class CollectionsPA2 implements PersistenceAgent2 {
+public class CollectionsDatabase implements PersistenceAgent {
 
-	private static final Logger cpa2Logger = LoggerFactory.getLogger(CollectionsPA2.class);
+	private static final Logger cpa2Logger = LoggerFactory.getLogger(CollectionsDatabase.class);
 	
 	private final Map<Class<?>, Class<?>> supertypeBindings;
 	
@@ -29,7 +29,7 @@ public class CollectionsPA2 implements PersistenceAgent2 {
 	/**
 	 * 
 	 */
-	public CollectionsPA2() {
+	public CollectionsDatabase() {
 		this.tables = new HashMap<>();
 		this.supertypeBindings = new HashMap<>();
 	}

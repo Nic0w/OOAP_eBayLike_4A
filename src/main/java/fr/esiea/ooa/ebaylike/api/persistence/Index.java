@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.esiea.ooa.ebaylike.default_impl.p2;
+package fr.esiea.ooa.ebaylike.api.persistence;
 
 import java.lang.annotation.Target;
 import java.lang.annotation.Retention;

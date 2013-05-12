@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.esiea.ooa.ebaylike.api.persistence.FilteredTable;
+import fr.esiea.ooa.ebaylike.api.persistence.Index;
 import fr.esiea.ooa.ebaylike.api.persistence.Table;
 
 public class DefaultFTable<T> implements FilteredTable<T> {

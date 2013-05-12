@@ -13,7 +13,7 @@ import fr.esiea.ooa.ebaylike.api.User;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent2;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 /**
  * @author Nicolas Remi Romain
@@ -29,7 +29,7 @@ public class DefaultUser extends PersistentUser {
 	 * @param firstname
 	 * @param lastname
 	 */
-	public DefaultUser(PersistenceAgent2 bidStorage, BidFactory bidFactory, OfferFactory offerFactory,  String login, String firstname, String lastname) {
+	public DefaultUser(PersistenceAgent bidStorage, BidFactory bidFactory, OfferFactory offerFactory,  String login, String firstname, String lastname) {
 		super(bidStorage, bidFactory,  offerFactory, login, firstname, lastname);
 
 	}

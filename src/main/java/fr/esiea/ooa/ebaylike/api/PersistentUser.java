@@ -8,7 +8,7 @@ import java.util.Date;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent2;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 /**
  * @author Nicolas Remi Romain
@@ -16,7 +16,7 @@ import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent2;
  */
 public abstract class PersistentUser extends AbstractUser {
 
-	private final PersistenceAgent2 bidStorage;
+	private final PersistenceAgent bidStorage;
 	
 	private final OfferFactory offerFactory;
 	
@@ -27,7 +27,7 @@ public abstract class PersistentUser extends AbstractUser {
 	 * @param firstname
 	 * @param lastname
 	 */
-	protected PersistentUser(PersistenceAgent2 bidStorage, BidFactory bidFactory, OfferFactory offerFactory, String login, String firstname, String lastname) {
+	protected PersistentUser(PersistenceAgent bidStorage, BidFactory bidFactory, OfferFactory offerFactory, String login, String firstname, String lastname) {
 		super(bidFactory, offerFactory, login, firstname, lastname);
 		
 		this.bidStorage = bidStorage;

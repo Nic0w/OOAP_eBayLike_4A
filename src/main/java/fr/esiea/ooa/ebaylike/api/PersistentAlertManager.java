@@ -11,15 +11,15 @@ import java.util.Set;
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
 import fr.esiea.ooa.ebaylike.api.factory.AlertFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent2;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 public class PersistentAlertManager implements AlertManager {
 	
-	private final PersistenceAgent2 storage;
+	private final PersistenceAgent storage;
 	
 	private final AlertFactory alertFactory;
 	
-	public PersistentAlertManager(PersistenceAgent2 storage, AlertFactory alertFactory) {
+	public PersistentAlertManager(PersistenceAgent storage, AlertFactory alertFactory) {
 		this.storage = storage;
 		this.alertFactory = alertFactory;
 	}

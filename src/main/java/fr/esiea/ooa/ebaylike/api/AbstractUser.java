@@ -5,7 +5,7 @@ import java.util.Date;
 import fr.esiea.ooa.ebaylike.api.event.AlertType;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
 import fr.esiea.ooa.ebaylike.api.factory.OfferFactory;
-import fr.esiea.ooa.ebaylike.default_impl.p2.Index;
+import fr.esiea.ooa.ebaylike.api.persistence.Index;
 
 /**
  * @author Nicolas Remi Romain

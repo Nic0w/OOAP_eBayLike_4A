@@ -13,7 +13,7 @@ import fr.esiea.ooa.ebaylike.api.Product;
 import fr.esiea.ooa.ebaylike.api.Seller;
 import fr.esiea.ooa.ebaylike.api.factory.AlertFactory;
 import fr.esiea.ooa.ebaylike.api.factory.BidFactory;
-import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent2;
+import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 
 
 /**
@@ -25,7 +25,7 @@ public class DefaultBidFactory implements BidFactory {
 	private final PersistentAlertManager alertManager;
 	private final PersistentOfferManager offerManager;
 	
-	public DefaultBidFactory(PersistenceAgent2 storage, AlertFactory factory) {
+	public DefaultBidFactory(PersistenceAgent storage, AlertFactory factory) {
 		
 		this.alertManager = new PersistentAlertManager(storage, factory);
 		
