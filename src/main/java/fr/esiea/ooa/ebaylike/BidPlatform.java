@@ -57,10 +57,21 @@ public class BidPlatform {
 		this.productFactory = productFactory;
 	}
 
+	/**
+	 * This method return a singleton.
+	 * 
+	 * @return An instance of BidPlateform
+	 */
 	public static BidPlatform getDefaultInstance() {
 		return getDefaultInstance(false);
 	}
 	
+	/**
+	 * Return the singleton or create a new instance if the specified argument is true.
+	 * 
+	 * @param newInstance
+	 * @return An instance of BidPlatform
+	 */
 	public static BidPlatform getDefaultInstance(boolean newInstance) {
 		
 		BidPlatform instance;
