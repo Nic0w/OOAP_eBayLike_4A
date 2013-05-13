@@ -189,6 +189,8 @@ public abstract class AbstractBid implements Bid {
 		
 		fireHigherOfferAdded(o);
 		
+		if(o.getPrice() >= this.reservePrice)
+			fireReservePriceReached();
 	}
 	
 	protected abstract void fireReservePriceReached();

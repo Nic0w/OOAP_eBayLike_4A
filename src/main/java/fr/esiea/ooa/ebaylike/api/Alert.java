@@ -11,10 +11,10 @@ import fr.esiea.ooa.ebaylike.api.event.AlertType;
  */
 public interface Alert {
 
-   public User getUser();
+	public User getUser();
 
 	public AlertType getAlertType();
-	
-	
-	
+
+	public Bid getBid();
+
 }

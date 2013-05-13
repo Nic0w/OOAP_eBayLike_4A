@@ -8,6 +8,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.esiea.ooa.ebaylike.api.Alert;
 import fr.esiea.ooa.ebaylike.api.Bid;
 import fr.esiea.ooa.ebaylike.api.BidState;
 import fr.esiea.ooa.ebaylike.api.Offer;
@@ -22,6 +23,7 @@ import fr.esiea.ooa.ebaylike.api.factory.ProductFactory;
 import fr.esiea.ooa.ebaylike.api.factory.UserFactory;
 import fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent;
 import fr.esiea.ooa.ebaylike.api.persistence.StorageException;
+import fr.esiea.ooa.ebaylike.default_impl.DefaultAlert;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultOffer;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultProduct;
 import fr.esiea.ooa.ebaylike.default_impl.DefaultUser;
@@ -70,8 +72,10 @@ public class BidPlatform {
 			CollectionsDatabase storage = new CollectionsDatabase();
 			
 			storage.bind(DefaultUser.class,    User.class);
+			//storage.bind(FakeUser.class,    User.class);
 			storage.bind(DefaultOffer.class,   Offer.class);
 			storage.bind(DefaultProduct.class, Product.class);
+			storage.bind(DefaultAlert.class,   Alert.class);
 			storage.bind(PersistentBid.class,  Bid.class);
 			
 			ProductFactory productFactory = new DefaultProductFactory();
