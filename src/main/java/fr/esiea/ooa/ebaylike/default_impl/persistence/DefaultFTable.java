@@ -61,7 +61,7 @@ public class DefaultFTable<T> implements FilteredTable<T> {
 		for(Method m : source.getDeclaredMethods())
 			if(m.getReturnType().equals(filter) && m.getParameterTypes().length == 0) { //We ensure that the method has no args.
 				
-				dftLogger.debug("Method named {} was found in class {}.", m.getName(), source.getSimpleName());
+				dftLogger.trace("Method named {} was found in class {}.", m.getName(), source.getSimpleName());
 				
 				return m;
 			}
@@ -78,7 +78,7 @@ public class DefaultFTable<T> implements FilteredTable<T> {
 		for(Method m : source.getDeclaredMethods())
 			if(m.getName().toLowerCase().contentEquals(realFilter) && m.getParameterTypes().length == 0) { //We ensure that the method has no args.
 				
-				dftLogger.debug("Method named {} was found in class {}.", m.getName(), source.getSimpleName());
+				dftLogger.trace("Method named {} was found in class {}.", m.getName(), source.getSimpleName());
 				
 				return m;
 			}

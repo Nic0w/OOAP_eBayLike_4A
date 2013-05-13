@@ -38,7 +38,7 @@ public class DefaultTable<T> implements Table<T> {
 	@Override
 	public FilteredTable<T> where(Class<?> field) {
 		
-		dtLogger.info("Creating FilteredTable for field of type {}.", field.getSimpleName());
+		dtLogger.trace("Creating FilteredTable for field of type {}.", field.getSimpleName());
 		
 		return new DefaultFTable<T>(this.storedType, this.rows).byField(field);
 	}
@@ -46,7 +46,7 @@ public class DefaultTable<T> implements Table<T> {
 	@Override
 	public FilteredTable<T> where(String name) {
 		
-		dtLogger.info("Creating FilteredTable for field named '{}'.", name);
+		dtLogger.trace("Creating FilteredTable for field named '{}'.", name);
 	
 		return new DefaultFTable<T>(this.storedType, this.rows).byName(name);
 	}
