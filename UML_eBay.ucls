@@ -2,7 +2,7 @@
   realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
   <enumeration id="1" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.event.AlertType" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/event/AlertType.java" binary="false">    
-    <position height="-1" width="-1" x="-330" y="-172"/>    
+    <position height="-1" width="-1" x="302" y="-867"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -11,7 +11,7 @@
   <interface id="2" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.event.BuyerBidListener" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/event/BuyerBidListener.java" 
     binary="false">    
-    <position height="-1" width="-1" x="646" y="-571"/>    
+    <position height="-1" width="-1" x="643" y="-640"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -20,7 +20,7 @@
   <interface id="3" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.event.SellerBidListener" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/event/SellerBidListener.java" 
     binary="false">    
-    <position height="-1" width="-1" x="893" y="-669"/>    
+    <position height="-1" width="-1" x="1014" y="-881"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -29,7 +29,7 @@
   <class id="4" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.exception.BadSellerException" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/exception/BadSellerException.java" 
     binary="false">    
-    <position height="-1" width="-1" x="-552" y="74"/>    
+    <position height="-1" width="-1" x="-319" y="92"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -38,7 +38,7 @@
   <class id="5" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.exception.IllegalActionException" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/exception/IllegalActionException.java" 
     binary="false">    
-    <position height="-1" width="-1" x="-551" y="262"/>    
+    <position height="-1" width="-1" x="-318" y="280"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -47,7 +47,7 @@
   <class id="6" corner="BOTTOM_RIGHT" language="java" 
     name="fr.esiea.ooa.ebaylike.api.exception.UserAlreadyExistsException" project="ebaylike" 
     file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/exception/UserAlreadyExistsException.java" binary="false">    
-    <position height="-1" width="-1" x="1220" y="-359"/>    
+    <position height="-1" width="-1" x="1242" y="-341"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -72,7 +72,7 @@
   <interface id="9" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.factory.ProductFactory" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/factory/ProductFactory.java" 
     binary="false">    
-    <position height="-1" width="-1" x="1792" y="724"/>    
+    <position height="-1" width="-1" x="1787" y="712"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -80,7 +80,7 @@
   </interface>  
   <interface id="10" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.factory.UserFactory" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/factory/UserFactory.java" binary="false">    
-    <position height="-1" width="-1" x="1335" y="738"/>    
+    <position height="-1" width="-1" x="1502" y="655"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -88,7 +88,7 @@
   </interface>  
   <interface id="11" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.factory.AlertFactory" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/factory/AlertFactory.java" binary="false">    
-    <position height="-1" width="-1" x="1546" y="-166"/>    
+    <position height="-1" width="-1" x="1530" y="-222"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -97,7 +97,7 @@
   <interface id="12" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.persistence.FilteredTable" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/persistence/FilteredTable.java" 
     binary="false">    
-    <position height="-1" width="-1" x="1880" y="-540"/>    
+    <position height="-1" width="-1" x="1882" y="-706"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -105,7 +105,7 @@
   </interface>  
   <annotation id="13" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.persistence.Index" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/persistence/Index.java" binary="false">    
-    <position height="-1" width="-1" x="1596" y="-549"/>    
+    <position height="-1" width="-1" x="1514" y="-535"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -114,7 +114,7 @@
   <interface id="14" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.persistence.PersistenceAgent" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/persistence/PersistenceAgent.java" 
     binary="false">    
-    <position height="-1" width="-1" x="1473" y="235"/>    
+    <position height="-1" width="-1" x="1289" y="493"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -131,7 +131,7 @@
   </class>  
   <interface id="16" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.persistence.Table" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/persistence/Table.java" binary="false">    
-    <position height="-1" width="-1" x="2136" y="340"/>    
+    <position height="-1" width="-1" x="2164" y="315"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -155,7 +155,7 @@
   </class>  
   <interface id="19" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.Alert" project="ebaylike" 
     file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/Alert.java" binary="false">    
-    <position height="-1" width="-1" x="-553" y="-178"/>    
+    <position height="-1" width="-1" x="18" y="-876"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -187,7 +187,7 @@
   </enumeration>  
   <interface id="23" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.Buyer" project="ebaylike" 
     file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/Buyer.java" binary="false">    
-    <position height="-1" width="-1" x="646" y="-406"/>    
+    <position height="-1" width="-1" x="650" y="-439"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -195,7 +195,7 @@
   </interface>  
   <class id="24" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.DateHelper" project="ebaylike" 
     file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/DateHelper.java" binary="false">    
-    <position height="-1" width="-1" x="-58" y="-394"/>    
+    <position height="-1" width="-1" x="-55" y="-393"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -220,7 +220,7 @@
   <class id="27" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.PersistentAlertManager" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/PersistentAlertManager.java" 
     binary="false">    
-    <position height="-1" width="-1" x="1030" y="431"/>    
+    <position height="-1" width="-1" x="1300" y="263"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -261,7 +261,7 @@
   </interface>  
   <interface id="32" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.Seller" project="ebaylike" 
     file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/Seller.java" binary="false">    
-    <position height="-1" width="-1" x="893" y="-514"/>    
+    <position height="-1" width="-1" x="1011" y="-711"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -269,7 +269,7 @@
   </interface>  
   <interface id="33" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.api.User" project="ebaylike" 
     file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/api/User.java" binary="false">    
-    <position height="-1" width="-1" x="893" y="-359"/>    
+    <position height="-1" width="-1" x="1014" y="-495"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -287,7 +287,7 @@
   <class id="35" corner="BOTTOM_RIGHT" language="java" 
     name="fr.esiea.ooa.ebaylike.default_impl.factory.DefaultBidFactory" project="ebaylike" 
     file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/default_impl/factory/DefaultBidFactory.java" binary="false">    
-    <position height="-1" width="-1" x="1810" y="315"/>    
+    <position height="-1" width="-1" x="1862" y="281"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -305,7 +305,7 @@
   <class id="37" corner="BOTTOM_RIGHT" language="java" 
     name="fr.esiea.ooa.ebaylike.default_impl.factory.DefaultProductFactory" project="ebaylike" 
     file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/default_impl/factory/DefaultProductFactory.java" binary="false">    
-    <position height="-1" width="-1" x="1920" y="961"/>    
+    <position height="-1" width="-1" x="1792" y="962"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -314,7 +314,7 @@
   <class id="38" corner="BOTTOM_RIGHT" language="java" 
     name="fr.esiea.ooa.ebaylike.default_impl.factory.DefaultUserFactory" project="ebaylike" 
     file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/default_impl/factory/DefaultUserFactory.java" binary="false">    
-    <position height="-1" width="-1" x="1800" y="-8"/>    
+    <position height="-1" width="-1" x="1771" y="23"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -324,7 +324,7 @@
     name="fr.esiea.ooa.ebaylike.default_impl.persistence.CollectionsDatabase" project="ebaylike" 
     file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/default_impl/persistence/CollectionsDatabase.java" 
     binary="false">    
-    <position height="-1" width="-1" x="1790" y="530"/>    
+    <position height="-1" width="-1" x="1803" y="516"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -333,7 +333,7 @@
   <class id="40" corner="BOTTOM_RIGHT" language="java" 
     name="fr.esiea.ooa.ebaylike.default_impl.persistence.DefaultFTable" project="ebaylike" 
     file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/default_impl/persistence/DefaultFTable.java" binary="false">    
-    <position height="-1" width="-1" x="1893" y="-259"/>    
+    <position height="-1" width="-1" x="1889" y="-407"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -351,7 +351,7 @@
   <class id="42" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.default_impl.DefaultAlert" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/default_impl/DefaultAlert.java" 
     binary="false">    
-    <position height="-1" width="-1" x="-344" y="101"/>    
+    <position height="-1" width="-1" x="223" y="-608"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -360,7 +360,7 @@
   <class id="43" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.default_impl.DefaultOffer" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/default_impl/DefaultOffer.java" 
     binary="false">    
-    <position height="-1" width="-1" x="331" y="-10"/>    
+    <position height="-1" width="-1" x="321" y="-20"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -377,7 +377,7 @@
   </class>  
   <class id="45" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.default_impl.DefaultUser" 
     project="ebaylike" file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/default_impl/DefaultUser.java" binary="false">    
-    <position height="-1" width="-1" x="749" y="623"/>    
+    <position height="-1" width="-1" x="804" y="623"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -385,7 +385,7 @@
   </class>  
   <class id="46" corner="BOTTOM_RIGHT" language="java" name="fr.esiea.ooa.ebaylike.BidPlatform" project="ebaylike" 
     file="/ebaylike/src/main/java/fr/esiea/ooa/ebaylike/BidPlatform.java" binary="false">    
-    <position height="-1" width="-1" x="1520" y="935"/>    
+    <position height="-1" width="-1" x="1325" y="945"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
